@@ -1,4 +1,26 @@
 <resources>
+    <string name="app_name">Cleaning Buddy</string>
+    <string name="login_title_tv_text">Cleaning Buddy</string>
+    <string name="login_prompt_tv_text">Log in to your account</string>
+    <string name="create_account_prompt_tv_text">Create an account</string>
+    <string name="username_et_hint">username</string>
+    <string name="password_et_hint">password</string>
+    <string name="repeat_password_et_hint">repeat password</string>
+    <string name="login_login_btn_text">Log in</string>
+    <string name="login_no_account_tv_text">Don’t have an account yet?</string>
+    <string name="signup_signup_btn_text">Sign up</string>
+    <string name="signup_cancel_btn_text">Cancel</string>
+    <string name="profile_title_tv_text">Your Profile</string>
+    <string name="logout_btn_text">Log out</string>
+    <string name="language_label_text">Language</string>
+    <string name="theme_label_text">Theme</string>
+    <string name="language_english">English</string>
+    <string name="language_dutch">Dutch</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="tab_rooms">Rooms</string>
+    <string name="tab_tasks">Tasks</string>
+    <string name="tab_profile">Profile</string>
     <string name="error_length">%1$s must be at least %2$d characters long.</string>
     <string name="error_numeric">%1$s must be numeric.</string>
     <string name="error_not_empty">%1$s is required.</string>
