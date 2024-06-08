@@ -29,4 +29,5 @@
     <string name="error_password_max_length">%1$s must not be longer than %2$d characters.</string>
     <string name="error_password_no_spaces">%1$s must not contain spaces.</string>
     <string name="error_password_strength">%1$s must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</string>
+    <string name="error_password_mismatch">Passwords do not match.</string>
 </resources>

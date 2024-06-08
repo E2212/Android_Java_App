@@ -1,4 +1,4 @@
-package utils;
+package com.apep.cleaningbuddy.utils;
 
 import android.content.Context;
 import com.apep.cleaningbuddy.R;
