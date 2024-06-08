@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.apep.cleaningbuddy.database.Database;
+import com.apep.cleaningbuddy.exceptions.UserNotFoundException;
 import com.apep.cleaningbuddy.models.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -31,7 +32,15 @@ public class LoginActivity extends AppCompatActivity {
             String username = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
 
-            if (validateCredentials(username, password)) {
+            boolean valid;
+            try {
+                User user = User.getUserByUsername(this, username);
+                valid = user.checkUserPassword(password.getBytes());
+            } catch (UserNotFoundException e) {
+                valid = false;
+            }
+
+            if (valid) {
                 Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                 startActivity(intent);
                 finish();
@@ -39,10 +48,5 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private boolean validateCredentials(String username, String password) {
-        User user = Database.getDatabase(this).userDao().getUserByUsername(username);
-        return user != null && user.getPassword().equals(password);
     }
 }
