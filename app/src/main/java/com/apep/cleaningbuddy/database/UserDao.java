@@ -18,4 +18,7 @@ public interface UserDao {
     void insert(User user);
     @Update
     void update(User user);
+
+    @Query("SELECT * FROM user WHERE username = :username")
+    User getUserByUsername(String username);
 }
