@@ -4,7 +4,6 @@ import android.content.Context;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
-import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -19,8 +18,7 @@ import java.util.List;
     foreignKeys = {
         @ForeignKey(entity = Task.class, parentColumns = "id", childColumns = "taskId", onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId", onDelete = ForeignKey.SET_NULL)
-    },
-    indices = {@Index(value = "userId"), @Index(value = "taskId")}
+    }
 )
 public class CompletedTask {
     @PrimaryKey(autoGenerate = true)

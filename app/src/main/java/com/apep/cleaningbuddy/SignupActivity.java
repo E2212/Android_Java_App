@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.apep.cleaningbuddy.database.Database;
 import com.apep.cleaningbuddy.models.User;
 import com.apep.cleaningbuddy.utils.MethodsValidations;
 
@@ -57,7 +56,7 @@ public class SignupActivity extends AppCompatActivity {
 
             User newUser = new User();
             newUser.setUsername(username);
-            newUser.setPassword(password);
+            newUser.setHashedPassword(password.getBytes());
             newUser.setLanguage(spinnerLanguage.getSelectedItem().toString());
 
             User.addUser(this,newUser);

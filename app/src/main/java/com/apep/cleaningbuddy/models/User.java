@@ -18,15 +18,18 @@ import java.util.List;
 
 @Entity(indices = {@Index(value = "username", unique = true)})
 public class User {
+
     @Ignore
     private static final String PASSWORD_SALT = "KJx#1cEMVB1b";
+    @Ignore
+    public static User loggedInUser;
     @PrimaryKey(autoGenerate = true)
     private Integer id;
+
     private String username;
     private byte[] password;
     private String language;
     private String theme;
-
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] profilePicture;
 
@@ -51,7 +54,7 @@ public class User {
     }
 
     public void setPassword(byte[] password) {
-        this.password = Cryptor.hashPassword(ArrayUtils.combine(password, PASSWORD_SALT.getBytes()));
+        this.password = password;
     }
 
     public String getLanguage() {
@@ -77,12 +80,19 @@ public class User {
     public void setProfilePicture(byte[] profilePicture) {
         this.profilePicture = profilePicture;
     }
-
     public User() {}
 
     public boolean checkUserPassword(byte[] password) {
-        Cryptor.hashPassword(ArrayUtils.combine(password, PASSWORD_SALT.getBytes()));
-        return (Arrays.equals(this.password, password));
+        byte[] hashedPassword = Cryptor.hashPassword(ArrayUtils.combine(password, PASSWORD_SALT.getBytes()));
+        boolean valid = (Arrays.equals(this.password, hashedPassword));
+        if (valid){
+            loggedInUser = this;
+        }
+        return valid;
+    }
+
+    public void setHashedPassword(byte[] password) {
+        this.password = Cryptor.hashPassword(ArrayUtils.combine(password, PASSWORD_SALT.getBytes()));
     }
 
     public static void addUser(Context context, User user) {
@@ -108,5 +118,7 @@ public class User {
         }
         return user;
     }
-
+    public static User getLoggedInUser(){
+        return loggedInUser;
+    }
 }
