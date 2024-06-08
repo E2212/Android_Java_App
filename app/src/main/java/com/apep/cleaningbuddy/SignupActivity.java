@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.apep.cleaningbuddy.database.Database;
 import com.apep.cleaningbuddy.models.User;
 import com.apep.cleaningbuddy.utils.MethodsValidations;
 
