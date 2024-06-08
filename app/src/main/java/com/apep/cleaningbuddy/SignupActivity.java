@@ -56,7 +56,7 @@ public class SignupActivity extends AppCompatActivity {
 
             User newUser = new User();
             newUser.setUsername(username);
-            newUser.setPassword(password);
+            newUser.setHashedPassword(password.getBytes());
             newUser.setLanguage(spinnerLanguage.getSelectedItem().toString());
 
             User.addUser(this,newUser);
