@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskDetailsActivity">
+
+    <!-- Task Name -->
+
+    <!-- Edit Button -->
+
+    <!-- Delete Button -->
+    <TextView
+        android:id="@+id/activity_task_details_item_taskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="16dp"
+        android:text="Curtain cleaning"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Archive Button -->
+    <Button
+        android:id="@+id/activity_task_details_item_editButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="4dp"
+        android:foreground="@drawable/edit_button"
+        app:layout_constraintEnd_toStartOf="@id/activity_task_details_item_deleteButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/activity_task_details_item_deleteButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="4dp"
+        android:foreground="@drawable/remove_button"
+        app:layout_constraintEnd_toStartOf="@id/activity_task_details_item_archiveButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Task Details -->
+
+    <Button
+        android:id="@+id/activity_task_details_item_backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:foreground="@drawable/back_button"
+        app:layout_constraintEnd_toStartOf="@+id/activity_task_details_item_taskName"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/activity_task_details_item_archiveButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        android:foreground="@drawable/history_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_task_details_item_intervalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:text="Interval"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_taskName" />
+
+    <TextView
+        android:id="@+id/activity_task_details_item_interval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weekly"
+        app:layout_constraintStart_toEndOf="@id/activity_task_details_item_intervalLabel"
+        app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_intervalLabel"
+        android:layout_marginStart="124dp"/>
+
+    <TextView
+        android:id="@+id/activity_task_details_item_roomLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Room"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_interval" />
+
+    <TextView
+        android:id="@+id/activity_task_details_item_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room 6"
+        app:layout_constraintStart_toEndOf="@id/activity_task_details_item_roomLabel"
+        app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_roomLabel"
+        android:layout_marginStart="135dp"/>
+
+    <TextView
+        android:id="@+id/activity_task_details_item_assignedUserLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Assigned user"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_room" />
+
+    <TextView
+        android:id="@+id/activity_task_details_item_assignedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You"
+        app:layout_constraintStart_toEndOf="@id/activity_task_details_item_assignedUserLabel"
+        app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_assignedUserLabel"
+        android:layout_marginStart="82dp"/>
+
+    <TextView
+        android:id="@+id/activity_task_details_item_descriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Description"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_assignedUser" />
+
+    <TextView
+        android:id="@+id/activity_task_details_item_description"
+        android:layout_width="214dp"
+        android:layout_height="124dp"
+        android:layout_marginStart="100dp"
+        android:text="Curtains must be washed at 60°C"
+        app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_descriptionLabel"
+        app:layout_constraintStart_toEndOf="@id/activity_task_details_item_descriptionLabel" />
+
+    <!-- Bottom Navigation Buttons -->
+    <LinearLayout
+        android:id="@+id/activity_task_details_item_bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="Rooms"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="Tasks"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:padding="12dp"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="Profile"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
