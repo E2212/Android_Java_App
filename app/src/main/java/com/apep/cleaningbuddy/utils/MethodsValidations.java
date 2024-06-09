@@ -30,7 +30,7 @@ public class MethodsValidations {
 
     public boolean validateNotEmpty(String data, String fieldName) {
         if (data == null || data.trim().isEmpty()) {
-            error = String.format(context.getString(R.string.error_not_empty), fieldName);
+            error = String.format(context.getString(R.string.error_required), fieldName);
             return false;
         }
         return true;
@@ -38,7 +38,7 @@ public class MethodsValidations {
 
     public boolean validatePasswordStrength(String data, String fieldName) {
         if (data == null || data.trim().isEmpty()) {
-            error = String.format(context.getString(R.string.error_password_required), fieldName);
+            error = String.format(context.getString(R.string.error_required), fieldName);
             return false;
         }
         if (data.length() < 6) {
