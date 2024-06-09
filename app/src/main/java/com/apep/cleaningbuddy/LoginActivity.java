@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.apep.cleaningbuddy.database.Database;
+import com.apep.cleaningbuddy.database.DatabaseSeeder;
 import com.apep.cleaningbuddy.exceptions.UserNotFoundException;
 import com.apep.cleaningbuddy.models.User;
 
@@ -17,6 +18,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        DatabaseSeeder databaseSeeder = new DatabaseSeeder();
+        databaseSeeder.seedDatabase(this);
 
         EditText etUsername = findViewById(R.id.et_username);
         EditText etPassword = findViewById(R.id.et_password);

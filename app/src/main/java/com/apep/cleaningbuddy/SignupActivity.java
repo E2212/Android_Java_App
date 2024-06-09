@@ -60,7 +60,7 @@ public class SignupActivity extends AppCompatActivity {
             User newUser = new User();
             newUser.setUsername(username);
             newUser.setHashedPassword(password.getBytes());
-            newUser.setTheme(Theme.DARK); // Default light theme
+            newUser.setTheme(Theme.DARK);
 
             int resourceId = Language.getResourceIds()[languageSpinner.getSelectedItemPosition()];
             newUser.setLanguage(Language.fromResourceId(resourceId));
