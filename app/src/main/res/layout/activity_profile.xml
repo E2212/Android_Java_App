@@ -4,135 +4,117 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@color/white">
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="&lt;"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp"/>
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:text="@string/profile_title_tv_text"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.379"
-        app:layout_constraintStart_toEndOf="@id/btn_back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_username_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="@string/username_et_hint"
-        android:textSize="16sp"
-        android:layout_marginEnd="8dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        android:layout_marginTop="48dp"/>
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <TextView
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TheRealBuddy"
-        android:textSize="16sp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@id/tv_username_label"
-        app:layout_constraintTop_toTopOf="@id/tv_username_label"/>
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/tv_username_label" />
 
     <TextView
         android:id="@+id/tv_language_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/language_label_text"
-        android:textSize="16sp"
-        android:layout_marginEnd="8dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_username"
-        android:layout_marginTop="32dp"/>
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_username" />
 
     <Spinner
         android:id="@+id/spinner_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:entries="@array/language_options"
-        app:layout_constraintStart_toEndOf="@id/tv_language_label"
-        app:layout_constraintTop_toTopOf="@id/tv_language_label"/>
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@id/tv_language_label" />
 
     <TextView
         android:id="@+id/tv_theme_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/theme_label_text"
-        android:textSize="16sp"
-        android:layout_marginEnd="8dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_language"
-        android:layout_marginTop="32dp"/>
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/spinner_language" />
 
     <Spinner
         android:id="@+id/spinner_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:entries="@array/theme_options"
-        app:layout_constraintStart_toEndOf="@id/tv_theme_label"
-        app:layout_constraintTop_toTopOf="@id/tv_theme_label"/>
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/tv_theme_label" />
 
     <Button
         android:id="@+id/btn_logout"
-        style="@style/Widget.Cleaner.Button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="@string/logout_btn_text"
-        app:layout_constraintTop_toBottomOf="@id/spinner_theme"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_theme" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btn_rooms"
             style="@style/Widget.Cleaner.Button"
+            android:textColor="@color/grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_rooms"/>
+            android:text="@string/tab_rooms" />
 
         <Button
             android:id="@+id/btn_tasks"
             style="@style/Widget.Cleaner.Button"
+            android:textColor="@color/grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_tasks"/>
+            android:text="@string/tab_tasks" />
 
         <Button
             android:id="@+id/btn_profile"
@@ -140,6 +122,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_profile"/>
+            android:text="@string/tab_profile" />
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
