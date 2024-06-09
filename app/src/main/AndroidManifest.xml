@@ -19,9 +19,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignupActivity" android:exported="true"/>
+        <activity android:name=".SignupActivity" android:exported="false"/>
         <activity android:name=".MainActivity" android:exported="false"/>
-        <activity android:name=".ProfileActivity" android:exported="true"/>
+        <activity android:name=".ProfileActivity" android:exported="false"/>
+        <activity
+            android:name=".TaskDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllTasksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OpenTasksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TasksActivity"
+            android:exported="false">
+        </activity>
 
     </application>
 
