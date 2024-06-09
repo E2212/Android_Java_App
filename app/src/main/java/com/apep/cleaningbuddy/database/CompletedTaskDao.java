@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface CompletedTaskDao {
 
-    @Query("SELECT * FROM completed_task ")
+    @Query("SELECT * FROM CompletedTask ")
     List<CompletedTask> getAll();
 
     @Insert

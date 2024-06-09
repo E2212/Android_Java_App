@@ -15,7 +15,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity(
-    tableName = "completed_task",
     foreignKeys = {
         @ForeignKey(entity = Task.class, parentColumns = "id", childColumns = "taskId", onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId", onDelete = ForeignKey.SET_NULL)
