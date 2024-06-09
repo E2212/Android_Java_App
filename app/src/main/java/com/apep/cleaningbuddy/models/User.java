@@ -28,10 +28,8 @@ public class User {
 
     private String username;
     private byte[] password;
-    private String language;
-    private String theme;
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    private byte[] profilePicture;
+    private Language language;
+    private Theme theme;
 
     public Integer getId() {
         return id;
@@ -57,29 +55,22 @@ public class User {
         this.password = password;
     }
 
-    public String getLanguage() {
+    public Language getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Language language) {
         this.language = language;
     }
 
-    public String getTheme() {
+    public Theme getTheme() {
         return theme;
     }
 
-    public void setTheme(String theme) {
+    public void setTheme(Theme theme) {
         this.theme = theme;
     }
 
-    public byte[] getProfilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(byte[] profilePicture) {
-        this.profilePicture = profilePicture;
-    }
     public User() {}
 
     public boolean checkUserPassword(byte[] password) {
@@ -97,6 +88,8 @@ public class User {
 
     public static void addUser(Context context, User user) {
         if (user != null) {
+            // We gaan er van uit dat een nieuwe User alleen wordt aangemaakt tijdens registratie
+            loggedInUser = user;
             Database.getDatabase(context).userDao().insert(user);
         }
     }
@@ -120,5 +113,8 @@ public class User {
     }
     public static User getLoggedInUser(){
         return loggedInUser;
+    }
+    public static void logout() {
+        loggedInUser = null;
     }
 }

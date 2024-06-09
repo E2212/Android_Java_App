@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import com.apep.cleaningbuddy.database.Database;
-import com.apep.cleaningbuddy.utils.Converters;
+import com.apep.cleaningbuddy.utils.DateConverter;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 public class CompletedTask {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
-    @TypeConverters({Converters.class})
+    @TypeConverters({DateConverter.class})
     private Date completionDate;
     private Integer taskId;
     private Integer userId;

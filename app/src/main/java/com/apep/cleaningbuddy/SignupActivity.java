@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.apep.cleaningbuddy.models.Language;
+import com.apep.cleaningbuddy.models.Theme;
 import com.apep.cleaningbuddy.models.User;
 import com.apep.cleaningbuddy.utils.MethodsValidations;
 
@@ -26,10 +28,11 @@ public class SignupActivity extends AppCompatActivity {
         EditText etUsername = findViewById(R.id.et_username);
         EditText etPassword = findViewById(R.id.et_password);
         EditText etRepeatPassword = findViewById(R.id.et_repeat_password);
-        Spinner spinnerLanguage = findViewById(R.id.spinner_language);
-        ArrayAdapter<CharSequence> adapterLanguage = ArrayAdapter.createFromResource(this, R.array.language_options, android.R.layout.simple_spinner_item);
-        adapterLanguage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerLanguage.setAdapter(adapterLanguage);
+
+        Spinner languageSpinner = findViewById(R.id.spinner_language);
+        ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Language.getDisplayNames(this));
+        languageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        languageSpinner.setAdapter(languageAdapter);
 
         Button signupButton = findViewById(R.id.btn_signup);
         signupButton.setOnClickListener(v -> {
@@ -57,11 +60,12 @@ public class SignupActivity extends AppCompatActivity {
             User newUser = new User();
             newUser.setUsername(username);
             newUser.setHashedPassword(password.getBytes());
-            newUser.setLanguage(spinnerLanguage.getSelectedItem().toString());
+            newUser.setTheme(Theme.DARK); // Default light theme
 
-            User.addUser(this,newUser);
+            int resourceId = Language.getResourceIds()[languageSpinner.getSelectedItemPosition()];
+            newUser.setLanguage(Language.fromResourceId(resourceId));
 
-            Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show();
+            User.addUser(this, newUser);
 
             Intent intent = new Intent(SignupActivity.this, ProfileActivity.class);
             startActivity(intent);
