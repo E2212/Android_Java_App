@@ -8,8 +8,8 @@ import com.apep.cleaningbuddy.R;
 import java.util.Arrays;
 
 public enum Language {
-    DUTCH(R.string.language_dutch),
-    ENGLISH(R.string.language_english);
+    DUTCH(R.string.language_dutch_text),
+    ENGLISH(R.string.language_english_text);
 
     private final int resourceId;
 

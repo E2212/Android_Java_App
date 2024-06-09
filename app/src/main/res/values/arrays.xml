@@ -6,7 +6,7 @@
         <item>Dutch</item>
     </string-array>
     <string-array name="theme_options">
-        <item>@string/theme_light</item>
-        <item>@string/theme_dark</item>
+        <item>@string/theme_light_text</item>
+        <item>@string/theme_dark_text</item>
     </string-array>
 </resources>

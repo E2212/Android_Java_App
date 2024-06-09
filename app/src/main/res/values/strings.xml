@@ -8,11 +8,11 @@
     <string name="username_et_hint">username</string>
     <string name="password_et_hint">password</string>
     <string name="repeat_password_et_hint">repeat password</string>
-    <string name="login_login_btn_text">Log in</string>
+    <string name="login_btn_text">Log in</string>
     <string name="login_no_account_tv_text">Don’t have an account yet?</string>
 
     <!-- Signup Screen -->
-    <string name="signup_signup_btn_text">Sign up</string>
+    <string name="signup_btn_text">Sign up</string>
     <string name="signup_cancel_btn_text">Cancel</string>
 
     <!-- Profile Screen -->
@@ -22,23 +22,32 @@
     <!-- Settings -->
     <string name="language_label_text">Language</string>
     <string name="theme_label_text">Theme</string>
-    <string name="language_english">English</string>
-    <string name="language_dutch">Dutch</string>
-    <string name="theme_light">Light</string>
-    <string name="theme_dark">Dark</string>
+    <string name="language_english_text">English</string>
+    <string name="language_dutch_text">Dutch</string>
+    <string name="theme_light_text">Light</string>
+    <string name="theme_dark_text">Dark</string>
 
     <!-- Tabs -->
-    <string name="tab_rooms">Rooms</string>
-    <string name="tab_tasks">Tasks</string>
-    <string name="tab_profile">Profile</string>
+    <string name="tab_rooms_text">Rooms</string>
+    <string name="tab_tasks_text">Tasks</string>
+    <string name="tab_profile_text">Profile</string>
+    <string name="tab_yourTasks_text">Your tasks</string>
+    <string name="tab_allTasks_text">All tasks</string>
+    <string name="tab_openTasks_text">Open tasks</string>
+
+    <!-- ScrollView column headers -->
+    <string name="tab_ID_text">ID</string>
+    <string name="tab_Assignee_text">Assignee</string>
+    <string name="tab_completeTask_text">Complete task</string>
+
 
     <!-- Error Messages -->
-    <string name="error_length">%1$s must be at least %2$d characters long.</string>
-    <string name="error_numeric">%1$s must be numeric.</string>
-    <string name="error_required">%1$s is required.</string>
-    <string name="error_password_min_length">%1$s must be atleast %2$d characters.</string>
-    <string name="error_password_max_length">%1$s must not be longer than %2$d characters.</string>
-    <string name="error_password_no_spaces">%1$s must not contain spaces.</string>
-    <string name="error_password_strength">%1$s must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</string>
-    <string name="error_password_mismatch">Passwords do not match.</string>
+    <string name="error_length_text">%1$s must be at least %2$d characters long.</string>
+    <string name="error_numeric_text">%1$s must be numeric.</string>
+    <string name="error_required_text">%1$s is required.</string>
+    <string name="error_password_min_length_text">%1$s must be atleast %2$d characters.</string>
+    <string name="error_password_max_length_text">%1$s must not be longer than %2$d characters.</string>
+    <string name="error_password_no_spaces_text">%1$s must not contain spaces.</string>
+    <string name="error_password_strength_text">%1$s must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</string>
+    <string name="error_password_mismatch_text">Passwords do not match.</string>
 </resources>
