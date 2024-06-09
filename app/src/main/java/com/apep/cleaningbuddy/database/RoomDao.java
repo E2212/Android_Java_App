@@ -12,7 +12,7 @@ import java.util.List;
 
 @Dao
 public interface RoomDao {
-    @Query("SELECT * FROM room ")
+    @Query("SELECT * FROM room")
     List<Room> getAll();
     @Insert
     void insert(Room room);
@@ -20,4 +20,6 @@ public interface RoomDao {
     void update(Room room);
     @Delete
     void delete(Room room);
+    @Query("SELECT * FROM room WHERE id = :id")
+    Room getRoom(int id);
 }

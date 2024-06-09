@@ -101,7 +101,7 @@
         <Button
             android:id="@+id/btn_rooms"
             style="@style/Widget.Cleaner.Button"
-            android:textColor="@color/grey"
+            android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -110,7 +110,7 @@
         <Button
             android:id="@+id/btn_tasks"
             style="@style/Widget.Cleaner.Button"
-            android:textColor="@color/grey"
+            android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -15,6 +15,12 @@
     <string name="signup_signup_btn_text">Sign up</string>
     <string name="signup_cancel_btn_text">Cancel</string>
 
+    <!-- Rooms -->
+    <string name="rooms_title_tv_text">Rooms</string>
+    <string name="rooms_list_header_id">ID</string>
+    <string name="rooms_list_header_name">Room</string>
+    <string name="rooms_list_header_tasks">Tasks</string>
+
     <!-- Profile Screen -->
     <string name="profile_title_tv_text">Your Profile</string>
     <string name="logout_btn_text">Log out</string>

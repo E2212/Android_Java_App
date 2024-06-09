@@ -70,12 +70,16 @@ public class ProfileActivity extends AppCompatActivity {
 
         Button roomsButton = findViewById(R.id.btn_rooms);
         roomsButton.setOnClickListener(v -> {
-            // Placeholder for navigating to RoomsActivity
+            Intent intent = new Intent(this, RoomsActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         Button tasksButton = findViewById(R.id.btn_tasks);
         tasksButton.setOnClickListener(v -> {
-            // Placeholder for navigating to TasksActivity
+            Intent intent = new Intent(this, TasksActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         Button profileButton = findViewById(R.id.btn_profile);
