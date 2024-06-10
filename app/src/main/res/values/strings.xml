@@ -40,6 +40,9 @@
     <string name="edit_btn_save">Save</string>
     <string name="edit_btn_cancel">Cancel</string>
 
+    <!-- Error fields -->
+    <string name="error_room_name">Room name</string>
+
     <!-- Profile Screen -->
     <string name="profile_title_tv_text">Your Profile</string>
     <string name="logout_btn_text">Log out</string>

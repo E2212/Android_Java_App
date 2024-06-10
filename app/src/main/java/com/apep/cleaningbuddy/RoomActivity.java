@@ -2,17 +2,14 @@ package com.apep.cleaningbuddy;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.apep.cleaningbuddy.models.Room;
-import com.apep.cleaningbuddy.utils.MethodsValidations;
+import com.apep.cleaningbuddy.utils.InputValidations;
 
 public class RoomActivity extends AppCompatActivity {
 
@@ -54,8 +51,8 @@ public class RoomActivity extends AppCompatActivity {
 
         Button saveButton = findViewById(R.id.btn_save_edit);
         saveButton.setOnClickListener(v -> {
-            MethodsValidations validator = new MethodsValidations(this);
-            if (validator.validateNotEmpty(etName.getText().toString(), getString(R.string.et_room_name_req))) {
+            InputValidations validator = new InputValidations(this);
+            if (validator.validateNotEmpty(etName.getText().toString(), getString(R.string.error_room_name))) {
                 Intent intent;
                 if (room != null) {
                     room.setName(etName.getText().toString());
@@ -73,7 +70,7 @@ public class RoomActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else {
-                etName.setError(validator.getError());
+                etName.setError(validator.getErrors());
             }
         });
 
