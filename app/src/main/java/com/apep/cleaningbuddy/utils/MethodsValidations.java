@@ -61,6 +61,12 @@ public class MethodsValidations {
     }
 
     public String getError() {
-        return error;
+        String currentError = null;
+        if (error != null) {
+            currentError = error;
+            error = null;
+        }
+
+        return currentError;
     }
 }

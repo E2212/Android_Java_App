@@ -35,15 +35,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Room room = data.get(position);
-
-        /*
-        String id = "R-" + room.getId().toString();
-        holder.roomIdTf.setText(id);
-        holder.roomNameTf.setText(room.getName());
-        ho
-        lder.roomTaskCountTf.setText(String.valueOf(room.getTasks().size()));
-        */
-
         holder.bind(room, listener);
     }
 
@@ -53,9 +44,9 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView roomIdTf;
-        private TextView roomNameTf;
-        private TextView roomTaskCountTf;
+        private final TextView roomIdTf;
+        private final TextView roomNameTf;
+        private final TextView roomTaskCountTf;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             roomIdTf = itemView.findViewById(R.id.room_id_tf);

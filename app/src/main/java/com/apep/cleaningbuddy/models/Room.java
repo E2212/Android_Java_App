@@ -63,7 +63,12 @@ public class Room {
     }
 
     public static Room getRoom(Context context, int roomId) {
-        return Database.getDatabase(context).roomDao().getRoom(roomId);
+        Room room = Database.getDatabase(context).roomDao().getRoom(roomId);
+        List<Task> tasks = Database.getDatabase(context).taskDao().getRoomTasks(room.getId());
+        if (tasks != null) {
+            room.setTasks(tasks);
+        }
+        return room;
     }
 
     public static List<Room> getAll(Context context) {
@@ -71,6 +76,14 @@ public class Room {
         for (Room room : rooms) {
             List<Task> tasks = Database.getDatabase(context).taskDao().getRoomTasks(room.getId());
             if (tasks != null) {
+                for (Task task : tasks) {
+                    if (task.getUser() == null && task.getUserId() != null) {
+                        User user = Database.getDatabase(context).userDao().getUser(task.getUserId());
+                        if (user != null) {
+                            task.setUser(user);
+                        }
+                    }
+                }
                 room.setTasks(tasks);
             }
         }

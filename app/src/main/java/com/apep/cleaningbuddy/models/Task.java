@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -26,6 +27,8 @@ public class Task {
     private String description;
     private Integer userId;
     private Integer roomId;
+    @Ignore
+    private User user;
 
     public Integer getId() {
         return id;
@@ -95,5 +98,13 @@ public class Task {
 
     public static List<Task> getAll(Context context) {
         return Database.getDatabase(context).taskDao().getAll();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -17,9 +17,28 @@
 
     <!-- Rooms -->
     <string name="rooms_title_tv_text">Rooms</string>
-    <string name="rooms_list_header_id">ID</string>
     <string name="rooms_list_header_name">Room</string>
     <string name="rooms_list_header_tasks">Tasks</string>
+    <string name="room_edit_title">Edit room</string>
+    <string name="room_add_title">New room</string>
+
+    <!-- Tasks -->
+    <string name="task_list_header_assigned">Assigned</string>
+
+    <!-- Lists -->
+    <string name="list_header_id">ID</string>
+    <string name="list_header_task">Task</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_room_delete_title">Delete room</string>
+    <string name="dialog_room_delete_message">Are you sure you want to delete \'%1$s\'?</string>
+    <string name="dialog_btn_cancel">Cancel</string>
+    <string name="dialog_btn_delete">Delete</string>
+
+    <!-- Edit text -->
+    <string name="et_room_name_req">Room name *</string>
+    <string name="edit_btn_save">Save</string>
+    <string name="edit_btn_cancel">Cancel</string>
 
     <!-- Profile Screen -->
     <string name="profile_title_tv_text">Your Profile</string>
