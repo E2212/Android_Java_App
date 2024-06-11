@@ -40,7 +40,6 @@
     <string name="tab_Assignee_text">Assignee</string>
     <string name="tab_completeTask_text">Complete task</string>
 
-
     <!-- Error Messages -->
     <string name="error_length_text">%1$s must be at least %2$d characters long.</string>
     <string name="error_numeric_text">%1$s must be numeric.</string>
