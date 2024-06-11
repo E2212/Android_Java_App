@@ -41,6 +41,15 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".NewTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TaskHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".TaskDetailsActivity"
             android:exported="false" />
         <activity

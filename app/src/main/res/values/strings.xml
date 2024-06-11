@@ -69,4 +69,48 @@
     <string name="error_password_no_spaces">%1$s must not contain spaces.</string>
     <string name="error_password_strength">%1$s must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</string>
     <string name="error_password_mismatch">Passwords do not match.</string>
+
+
+    <!-- Ensar's filler task troep voor demo -->
+
+    <string name="toast_your_tasks">You are already in Your Tasks</string>
+    <string name="toast_open_tasks">You are already in Open Tasks</string>
+    <string name="toast_all_tasks">You are already in All Tasks</string>
+    <string name="toast_add_button">Add button clicked</string>
+    <string name="toast_task_saved">Task saved</string>
+    <string name="field_required">Field is required</string>
+    <string-array name="interval_options">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+        <item>Custom</item>
+    </string-array>
+    <string-array name="custom_interval_type_options">
+        <item>Days</item>
+        <item>Weeks</item>
+        <item>Months</item>
+        <item>Years</item>
+    </string-array>
+    <string-array name="room_options">
+        <item>Room 1</item>
+        <item>Room 2</item>
+        <item>Room 3</item>
+        <item>Room 4</item>
+        <item>Room 5</item>
+        <item>Room 6</item>
+        <item>Room 7</item>
+        <item>Room 8</item>
+        <item>Room 9</item>
+        <item>Room 10</item>
+    </string-array>
+    <string-array name="user_options">
+        <item>You</item>
+        <item>Ensar</item>
+        <item>Paco</item>
+        <item>Furkan</item>
+        <item>Khalid</item>
+        <item>Unassigned</item>
+    </string-array>
+
 </resources>

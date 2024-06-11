@@ -55,8 +55,9 @@ public class OpenTasksActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle "Add" button click
-                Toast.makeText(OpenTasksActivity.this, "Add button clicked", Toast.LENGTH_SHORT).show();
+                // Navigate to NewTaskActivity
+                Intent intent = new Intent(OpenTasksActivity.this, NewTaskActivity.class);
+                startActivity(intent);
             }
         });
 
