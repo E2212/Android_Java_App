@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="16dp"
         android:text="@string/rooms_title_tv_text"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -21,12 +23,12 @@
         android:id="@+id/btn_add_room"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="100dp"
         android:foreground="@drawable/add_button"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintStart_toEndOf="@+id/tv_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_title" />
-
+        app:layout_constraintTop_toTopOf="@+id/tv_title"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/room_list_headers"
