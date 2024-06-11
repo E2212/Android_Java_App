@@ -7,18 +7,19 @@
     tools:context=".OpenTasksActivity">
 
     <!-- Title and Add Button Container -->
+
     <TextView
         android:id="@+id/activity_open_tasks_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="16dp"
         android:text="Tasks"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/activity_open_tasks_item_addButton"
@@ -83,7 +84,7 @@
         android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@id/activity_open_tasks_item_tabButtons"
-        app:layout_constraintBottom_toTopOf="@id/activity_open_tasks_item_bottomNavigation"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp">
@@ -238,43 +239,42 @@
 
     <!-- Bottom Navigation Buttons -->
     <LinearLayout
-        android:id="@+id/activity_open_tasks_item_bottomNavigation"
-        android:layout_width="0dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
-        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            android:id="@+id/btn_rooms"
+            style="@style/Widget.Cleaner.Button"
+            android:textColor="@color/dark_grey"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:text="Rooms"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="1"
+            android:text="@string/tab_rooms" />
 
         <Button
+            android:id="@+id/btn_tasks"
+            style="@style/Widget.Cleaner.Button"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:text="Tasks"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:padding="12dp"/>
+            android:layout_weight="1"
+            android:text="@string/tab_tasks" />
 
         <Button
+            android:id="@+id/btn_profile"
+            style="@style/Widget.Cleaner.Button"
+            android:textColor="@color/dark_grey"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:text="Profile"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="1"
+            android:text="@string/tab_profile" />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
