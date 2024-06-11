@@ -21,10 +21,10 @@ public class OpenTasksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_tasks);
 
-        yourTasksButton = findViewById(R.id.activity_open_tasks_item_yourTasksButton);
-        openTasksButton = findViewById(R.id.activity_open_tasks_item_openTasksButton);
-        allTasksButton = findViewById(R.id.activity_open_tasks_item_allTasksButton);
-        addButton = findViewById(R.id.activity_open_tasks_item_addButton);
+        yourTasksButton = findViewById(R.id.openTasks_yourTasks_btn_id);
+        openTasksButton = findViewById(R.id.openTasks_openTasks_btn_id);
+        allTasksButton = findViewById(R.id.openTasks_allTasks_btn_id);
+        addButton = findViewById(R.id.openTasks_add_btn_id);
 
         yourTasksButton.setOnClickListener(new View.OnClickListener() {
             @Override
