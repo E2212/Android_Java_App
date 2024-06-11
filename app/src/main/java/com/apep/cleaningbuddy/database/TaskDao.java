@@ -20,4 +20,6 @@ public interface TaskDao {
     void update(Task task);
     @Delete
     void delete(Task task);
+    @Query("SELECT * FROM task WHERE roomId = :roomId ")
+    List<Task> getRoomTasks(int roomId);
 }

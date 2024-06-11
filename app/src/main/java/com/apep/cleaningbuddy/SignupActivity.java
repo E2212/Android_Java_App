@@ -13,17 +13,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.apep.cleaningbuddy.models.Language;
 import com.apep.cleaningbuddy.models.Theme;
 import com.apep.cleaningbuddy.models.User;
-import com.apep.cleaningbuddy.utils.MethodsValidations;
+import com.apep.cleaningbuddy.utils.InputValidations;
 
 public class SignupActivity extends AppCompatActivity {
-    private MethodsValidations validator;
+    private InputValidations validator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        validator = new MethodsValidations(this);
+        validator = new InputValidations(this);
 
         EditText etUsername = findViewById(R.id.et_username);
         EditText etPassword = findViewById(R.id.et_password);
@@ -41,15 +41,15 @@ public class SignupActivity extends AppCompatActivity {
             String repeatPassword = etRepeatPassword.getText().toString().trim();
 
             if (!validator.validateLength(username, "Username", 4)) {
-                showError(validator.getError());
+                showError(validator.getErrors());
                 return;
             }
             if (!validator.validateNotEmpty(username, "Username")) {
-                showError(validator.getError());
+                showError(validator.getErrors());
                 return;
             }
             if (!validator.validatePasswordStrength(password, "Password")) {
-                showError(validator.getError());
+                showError(validator.getErrors());
                 return;
             }
             if (!password.equals(repeatPassword)) {
