@@ -9,7 +9,7 @@
     <!-- Title and Add Button Container -->
 
     <TextView
-        android:id="@+id/activity_all_tasks_item_title"
+        android:id="@+id/allTasks_task_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="172dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/activity_all_tasks_item_addButton"
+        android:id="@+id/allTasks_add_btn_id"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:foreground="@drawable/add_button"
@@ -33,12 +33,12 @@
 
     <!-- Tab Buttons -->
     <LinearLayout
-        android:id="@+id/activity_all_tasks_item_tabButtons"
+        android:id="@+id/allTasks_topLinearLayout_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/activity_all_tasks_item_title"
+        app:layout_constraintTop_toBottomOf="@id/allTasks_task_tv_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
@@ -46,34 +46,34 @@
         android:paddingEnd="16dp">
 
         <Button
-            android:id="@+id/activity_all_tasks_item_yourTasksButton"
+            android:id="@+id/allTasks_yourTasks_btn_id"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="Your tasks"
+            android:text="@string/tab_yourTasks_text"
             android:background="@android:color/black"
             android:textColor="@android:color/white"
             android:padding="8dp"/>
 
         <Button
-            android:id="@+id/activity_all_tasks_item_openTasksButton"
+            android:id="@+id/allTasks_openTasks_btn_id"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="Open tasks"
+            android:text="@string/tab_allTasks_text"
             android:background="@android:color/black"
             android:textColor="@android:color/white"
             android:padding="8dp"/>
 
         <Button
-            android:id="@+id/activity_all_tasks_item_allTasksButton"
+            android:id="@+id/allTasks_allTasks_btn_id"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="All tasks"
+            android:text="@string/tab_allTasks_text"
             android:background="@color/activeTabBackground"
             android:padding="12dp"/>
 
@@ -81,7 +81,7 @@
 
     <!-- Scrollable Table Layout -->
     <ScrollView
-        android:id="@+id/activity_all_tasks_item_scrollView"
+        android:id="@+id/allTasks_sv_id"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -97,33 +97,37 @@
             android:stretchColumns="1">
 
             <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ID"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:padding="8dp"/>
 
                 <TextView
+                    android:id="@+id/allTasks_sv_ID_tv_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Task"
-                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:text="@string/tab_ID_text"
                     android:textColor="#000000"
-                    android:padding="8dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/allTasks_sv_task_tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tab_tasks_text"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/allTasks_sv_assignee_tv_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Assignee"
                     android:textStyle="bold"
                     android:textColor="#000000"
-                    android:padding="8dp"/>
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task1"
+                android:id="@+id/allTasks_task1_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -147,7 +151,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task2"
+                android:id="@+id/allTasks_task2_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -171,7 +175,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task3"
+                android:id="@+id/allTasks_task3_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -195,7 +199,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task4"
+                android:id="@+id/allTasks_task4_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -219,7 +223,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task5"
+                android:id="@+id/allTasks_task5_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -243,7 +247,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task6"
+                android:id="@+id/allTasks_task6_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -267,7 +271,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task7"
+                android:id="@+id/allTasks_task7_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -291,7 +295,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task8"
+                android:id="@+id/allTasks_task8_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -315,7 +319,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task9"
+                android:id="@+id/allTasks_task9_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -339,7 +343,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task10"
+                android:id="@+id/allTasks_task10_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -363,7 +367,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/activity_all_tasks_item_task11"
+                android:id="@+id/allTasks_task11_tr_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -425,6 +429,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/tab_profile" />
+
     </LinearLayout>
 
 

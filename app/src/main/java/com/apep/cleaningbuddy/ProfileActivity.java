@@ -15,8 +15,6 @@ import com.apep.cleaningbuddy.models.Language;
 import com.apep.cleaningbuddy.models.Theme;
 import com.apep.cleaningbuddy.models.User;
 
-import java.util.Arrays;
-
 public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +22,16 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         User loggedInUser = User.getLoggedInUser();
-        TextView tvUsername = findViewById(R.id.tv_username);
+        TextView tvUsername = findViewById(R.id.profile_username_tv_id);
         tvUsername.setText(loggedInUser.getUsername());
 
-        Spinner languageSpinner = findViewById(R.id.spinner_language);
+        Spinner languageSpinner = findViewById(R.id.signup_language_spnr_id);
         ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Language.getDisplayNames(this));
         languageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         languageSpinner.setAdapter(languageAdapter);
         languageSpinner.setSelection(Language.getPosition(this, loggedInUser.getLanguage()));
 
-        Spinner themeSpinner = findViewById(R.id.spinner_theme);
+        Spinner themeSpinner = findViewById(R.id.profile_theme_spnr_id);
         ArrayAdapter<String> themeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Theme.getDisplayNames(this));
         themeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         themeSpinner.setAdapter(themeAdapter);
@@ -59,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        Button logoutButton = findViewById(R.id.btn_logout);
+        Button logoutButton = findViewById(R.id.profile_logout_btn_id);
         logoutButton.setOnClickListener(v -> {
             Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -68,21 +66,21 @@ public class ProfileActivity extends AppCompatActivity {
             finish();
         });
 
-        Button roomsButton = findViewById(R.id.btn_rooms);
+        Button roomsButton = findViewById(R.id.profile_rooms_btn_id);
         roomsButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, RoomsActivity.class);
             startActivity(intent);
             finish();
         });
 
-        Button tasksButton = findViewById(R.id.btn_tasks);
+        Button tasksButton = findViewById(R.id.profile_tasks_btn_id);
         tasksButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, TasksActivity.class);
             startActivity(intent);
             finish();
         });
 
-        Button profileButton = findViewById(R.id.btn_profile);
+        Button profileButton = findViewById(R.id.profile_profile_btn_id);
         profileButton.setOnClickListener(v -> {
             // Current Activity, no action needed
         });

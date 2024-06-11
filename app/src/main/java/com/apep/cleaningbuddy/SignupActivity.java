@@ -25,16 +25,16 @@ public class SignupActivity extends AppCompatActivity {
 
         validator = new InputValidations(this);
 
-        EditText etUsername = findViewById(R.id.et_username);
-        EditText etPassword = findViewById(R.id.et_password);
-        EditText etRepeatPassword = findViewById(R.id.et_repeat_password);
+        EditText etUsername = findViewById(R.id.signup_username_et_id);
+        EditText etPassword = findViewById(R.id.signup_password_tv_id);
+        EditText etRepeatPassword = findViewById(R.id.signup_repeat_password_tv_id);
 
-        Spinner languageSpinner = findViewById(R.id.spinner_language);
+        Spinner languageSpinner = findViewById(R.id.signup_language_spnr_id);
         ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Language.getDisplayNames(this));
         languageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         languageSpinner.setAdapter(languageAdapter);
 
-        Button signupButton = findViewById(R.id.btn_signup);
+        Button signupButton = findViewById(R.id.btn_signup_id);
         signupButton.setOnClickListener(v -> {
             String username = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
@@ -53,7 +53,7 @@ public class SignupActivity extends AppCompatActivity {
                 return;
             }
             if (!password.equals(repeatPassword)) {
-                showError(getString(R.string.error_password_mismatch));
+                showError(getString(R.string.error_password_mismatch_text));
                 return;
             }
 
@@ -72,7 +72,7 @@ public class SignupActivity extends AppCompatActivity {
             finish();
         });
 
-        Button cancelButton = findViewById(R.id.btn_cancel);
+        Button cancelButton = findViewById(R.id.signup_cancel_btn_id);
         cancelButton.setOnClickListener(v -> finish());
     }
 

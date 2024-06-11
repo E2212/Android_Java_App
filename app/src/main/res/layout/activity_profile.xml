@@ -7,7 +7,7 @@
     android:background="@color/white">
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/profile_tv_text_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_username_label"
+        android:id="@+id/profile_username_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -29,19 +29,19 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/signup_tv_tekst_id" />
 
     <TextView
-        android:id="@+id/tv_username"
+        android:id="@+id/profile_username_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="@id/tv_username_label" />
+        app:layout_constraintTop_toTopOf="@id/profile_username_tv_id" />
 
     <TextView
-        android:id="@+id/tv_language_label"
+        android:id="@+id/profile_language_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -49,17 +49,17 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_username" />
+        app:layout_constraintTop_toBottomOf="@id/profile_username_tv_id" />
 
     <Spinner
-        android:id="@+id/spinner_language"
+        android:id="@+id/signup_language_spnr_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@id/tv_language_label" />
+        app:layout_constraintTop_toTopOf="@id/profile_language_tv_id" />
 
     <TextView
-        android:id="@+id/tv_theme_label"
+        android:id="@+id/profile_theme_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -67,28 +67,28 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/spinner_language" />
+        app:layout_constraintTop_toBottomOf="@id/signup_language_spnr_id" />
 
     <Spinner
-        android:id="@+id/spinner_theme"
+        android:id="@+id/profile_theme_spnr_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="@id/tv_theme_label" />
+        app:layout_constraintTop_toTopOf="@id/profile_theme_tv_id" />
 
     <Button
-        android:id="@+id/btn_logout"
+        android:id="@+id/profile_logout_btn_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/logout_btn_text"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/profile_linearLayout_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_theme" />
+        app:layout_constraintTop_toBottomOf="@id/profile_theme_spnr_id" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/profile_linearLayout_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -99,30 +99,30 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btn_rooms"
+            android:id="@+id/profile_rooms_btn_id"
             style="@style/Widget.Cleaner.Button"
             android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_rooms" />
+            android:text="@string/tab_rooms_text" />
 
         <Button
-            android:id="@+id/btn_tasks"
+            android:id="@+id/profile_tasks_btn_id"
             style="@style/Widget.Cleaner.Button"
             android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_tasks" />
+            android:text="@string/tab_tasks_text" />
 
         <Button
-            android:id="@+id/btn_profile"
+            android:id="@+id/profile_profile_btn_id"
             style="@style/Widget.Cleaner.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_profile" />
+            android:text="@string/tab_profile_text" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline

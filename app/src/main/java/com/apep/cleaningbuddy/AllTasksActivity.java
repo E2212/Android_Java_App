@@ -21,10 +21,10 @@ public class AllTasksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_tasks);
 
-        yourTasksButton = findViewById(R.id.activity_all_tasks_item_yourTasksButton);
-        openTasksButton = findViewById(R.id.activity_all_tasks_item_openTasksButton);
-        allTasksButton = findViewById(R.id.activity_all_tasks_item_allTasksButton);
-        addButton = findViewById(R.id.activity_all_tasks_item_addButton);
+        yourTasksButton = findViewById(R.id.allTasks_yourTasks_btn_id);
+        openTasksButton = findViewById(R.id.allTasks_openTasks_btn_id);
+        allTasksButton = findViewById(R.id.allTasks_allTasks_btn_id);
+        addButton = findViewById(R.id.allTasks_add_btn_id);
 
         yourTasksButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,11 +81,11 @@ public class AllTasksActivity extends AppCompatActivity {
         });
 
         // Setup click listeners for table rows
-        setupTaskRowClickListener(R.id.activity_all_tasks_item_task1, "Curtain cleaning", "Weekly", "Room 6", "You", "Curtains must be washed at 60°C");
-        setupTaskRowClickListener(R.id.activity_all_tasks_item_task2, "Toilet cleaning", "Daily", "Room 5", "Ensar", "Clean the toilets daily");
-        setupTaskRowClickListener(R.id.activity_all_tasks_item_task3, "Carpet cleaning", "Monthly", "Room 4", "Paco", "Vacuum and clean carpets monthly");
-        setupTaskRowClickListener(R.id.activity_all_tasks_item_task4, "Bedding", "Weekly", "Room 3", "You", "Change bedding weekly");
-        setupTaskRowClickListener(R.id.activity_all_tasks_item_task5, "Electronics", "Weekly", "Room 2", "Khalid", "Dust and clean electronics weekly");
+        setupTaskRowClickListener(R.id.allTasks_task1_tr_id, "Curtain cleaning", "Weekly", "Room 6", "You", "Curtains must be washed at 60°C");
+        setupTaskRowClickListener(R.id.allTasks_task2_tr_id, "Toilet cleaning", "Daily", "Room 5", "Ensar", "Clean the toilets daily");
+        setupTaskRowClickListener(R.id.allTasks_task3_tr_id, "Carpet cleaning", "Monthly", "Room 4", "Paco", "Vacuum and clean carpets monthly");
+        setupTaskRowClickListener(R.id.allTasks_task4_tr_id, "Bedding", "Weekly", "Room 3", "You", "Change bedding weekly");
+        setupTaskRowClickListener(R.id.allTasks_task5_tr_id, "Electronics", "Weekly", "Room 2", "Khalid", "Dust and clean electronics weekly");
     }
 
     private void setupTaskRowClickListener(int rowId, final String taskName, final String interval, final String room, final String assignedUser, final String description) {

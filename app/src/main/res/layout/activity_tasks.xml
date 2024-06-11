@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/activity_tasks_item_addButton"
+        android:id="@+id/Tasks_add_btn_id"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:foreground="@drawable/add_button"
@@ -46,40 +46,40 @@
         android:paddingEnd="16dp">
 
         <Button
-            android:id="@+id/activity_tasks_item_yourTasksButton"
+            android:id="@+id/Tasks_yourTasks_btn_id"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="Your tasks"
-            android:background="@color/activeTabBackground"/>
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@color/activeTabBackground"
+            android:text="@string/tab_yourTasks_text" />
 
         <Button
-            android:id="@+id/activity_tasks_item_openTasksButton"
+            android:id="@+id/Tasks_openTasks_btn_id"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="Open tasks"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
             android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            android:text="@string/tab_openTasks_text"
+            android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/activity_tasks_item_allTasksButton"
+            android:id="@+id/Tasks_allTasks_btn_id"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="All tasks"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
             android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            android:text="@string/tab_allTasks_text"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
     <!-- Scrollable Table Layout -->
     <ScrollView
-        android:id="@+id/activity_tasks_item_scrollView"
+        android:id="@+id/Tasks_sv_id"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -95,29 +95,33 @@
             android:stretchColumns="1">
 
             <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ID"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:padding="8dp"/>
 
                 <TextView
+                    android:id="@+id/Tasks_sv_ID_tv_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Task"
-                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:text="@string/tab_ID_text"
                     android:textColor="#000000"
-                    android:padding="8dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/Tasks_sv_task_tv_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Complete task"
-                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:text="@string/tab_tasks_text"
                     android:textColor="#000000"
-                    android:padding="8dp"/>
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/Tasks_sv_completeTask_tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tab_completeTask_text"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow

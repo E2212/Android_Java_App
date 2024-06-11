@@ -21,16 +21,16 @@ public class LoginActivity extends AppCompatActivity {
         DatabaseSeeder databaseSeeder = new DatabaseSeeder();
         databaseSeeder.seedDatabase(this);
 
-        EditText etUsername = findViewById(R.id.et_username);
-        EditText etPassword = findViewById(R.id.et_password);
+        EditText etUsername = findViewById(R.id.signup_username_et_id);
+        EditText etPassword = findViewById(R.id.signup_password_tv_id);
 
-        Button signupButton = findViewById(R.id.btn_sign_up);
+        Button signupButton = findViewById(R.id.login_sign_up_btn_id);
         signupButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(intent);
         });
 
-        Button loginButton = findViewById(R.id.btn_login);
+        Button loginButton = findViewById(R.id.login_login_btn_id);
         loginButton.setOnClickListener(v -> {
             String username = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();

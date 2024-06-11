@@ -9,8 +9,8 @@ import com.apep.cleaningbuddy.R;
 import java.util.Arrays;
 
 public enum Theme {
-    LIGHT(R.string.theme_light),
-    DARK(R.string.theme_dark);
+    LIGHT(R.string.theme_light_text),
+    DARK(R.string.theme_dark_text);
 
     private final int resourceId;
 
