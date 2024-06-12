@@ -7,11 +7,19 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class AllTasksActivity extends BaseActivity {
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-    private Button yourTasksButton;
-    private Button openTasksButton;
-    private Button allTasksButton;
-    private Button addButton;
+import com.apep.cleaningbuddy.adapters.TaskAdapter;
+import com.apep.cleaningbuddy.models.Task;
+import com.apep.cleaningbuddy.interfaces.OnTaskClickListener;
+
+import java.util.List;
+
+public class AllTasksActivity extends BaseActivity implements OnTaskClickListener {
+
+    private RecyclerView recyclerView;
+    private List<Task> allTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,44 +27,41 @@ public class AllTasksActivity extends BaseActivity {
         setContentView(R.layout.activity_all_tasks);
         addNavbarListeners();
 
-        yourTasksButton = findViewById(R.id.allTasks_yourTasks_btn_id);
-        openTasksButton = findViewById(R.id.allTasks_openTasks_btn_id);
-        allTasksButton = findViewById(R.id.allTasks_allTasks_btn_id);
-        addButton = findViewById(R.id.allTasks_add_btn_id);
+        allTasks = Task.getAll(this); // Fetch all tasks from the database
+        recyclerView = findViewById(R.id.all_tasks_list_rv);
+        TaskAdapter adapter = new TaskAdapter(allTasks, this, false);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        yourTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to TasksActivity
-                Intent intent = new Intent(AllTasksActivity.this, YourTasksActivity.class);
-                startActivity(intent);
-            }
+
+        Button yourTasksButton = findViewById(R.id.allTasks_yourTasks_btn_id);
+        Button openTasksButton = findViewById(R.id.allTasks_openTasks_btn_id);
+        Button allTasksButton = findViewById(R.id.allTasks_allTasks_btn_id);
+        Button addButton = findViewById(R.id.allTasks_add_btn_id);
+
+        yourTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(AllTasksActivity.this, TasksActivity.class);
+            startActivity(intent)
         });
 
-        openTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to OpenTasksActivity
-                Intent intent = new Intent(AllTasksActivity.this, OpenTasksActivity.class);
-                startActivity(intent);
-            }
+        openTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(AllTasksActivity.this, OpenTasksActivity.class);
+            startActivity(intent);
         });
 
-        allTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle "All tasks" button click
-                Toast.makeText(AllTasksActivity.this, "You are already in All Tasks", Toast.LENGTH_SHORT).show();
-            }
+        allTasksButton.setOnClickListener(v -> {
+            Toast.makeText(AllTasksActivity.this, "You are already in All Tasks", Toast.LENGTH_SHORT).show();
         });
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to NewTaskActivity
-                Intent intent = new Intent(AllTasksActivity.this, TaskActivity.class);
-                startActivity(intent);
-            }
+
+        addButton.setOnClickListener(v -> {
+            Intent intent = new Intent(AllTasksActivity.this, NewTaskActivity.class);
+            startActivity(intent);
         });
+    }
+
+    @Override
+    public void onTaskClick(Task task) {
+        // Handle task click
     }
 }

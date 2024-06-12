@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".YourTasksActivity">
 
-    <!-- Title and Add Button Container -->
-
     <TextView
         android:id="@+id/activity_tasks_item_title"
         android:layout_width="wrap_content"
@@ -91,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/list_header_id"
+            android:text="ID"
             android:textAlignment="textStart" />
 
         <TextView
@@ -120,7 +118,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_separator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_list_headers" />
+        app:layout_constraintTop_toBottomOf="@id/task_list_headers" />
 
     <!-- Guidelines-->
     <androidx.constraintlayout.widget.Guideline

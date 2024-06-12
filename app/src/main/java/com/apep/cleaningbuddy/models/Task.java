@@ -26,6 +26,7 @@ public class Task {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
     private String name;
+    private boolean completed;
     private Integer interval;
     private String description;
     private Integer userId;
@@ -71,6 +72,14 @@ public class Task {
 
     public static Task getTask(Context context, int taskId) {
         return Database.getDatabase(context).taskDao().getTask(taskId);
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public Integer getId() {
@@ -197,4 +206,16 @@ public class Task {
     public String toString() {
         return name;
     }
+
+    public static List<Task> getOpenTasks(Context context) {
+        List<Task> tasks = Database.getDatabase(context).taskDao().getAll();
+        List<Task> openTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getUserId() == null) { // Assuming a task is open if it has no assigned user
+                openTasks.add(task);
+            }
+        }
+        return openTasks;
+    }
+
 }
