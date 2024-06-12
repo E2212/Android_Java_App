@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class AllTasksActivity extends BaseActivity {
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,8 +39,8 @@ public class AllTasksActivity extends BaseActivity implements OnTaskClickListene
         Button addButton = findViewById(R.id.allTasks_add_btn_id);
 
         yourTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(AllTasksActivity.this, TasksActivity.class);
-            startActivity(intent)
+            Intent intent = new Intent(AllTasksActivity.this, YourTasksActivity.class);
+            startActivity(intent);
         });
 
         openTasksButton.setOnClickListener(v -> {
@@ -55,7 +54,7 @@ public class AllTasksActivity extends BaseActivity implements OnTaskClickListene
 
 
         addButton.setOnClickListener(v -> {
-            Intent intent = new Intent(AllTasksActivity.this, NewTaskActivity.class);
+            Intent intent = new Intent(AllTasksActivity.this, TaskActivity.class);
             startActivity(intent);
         });
     }

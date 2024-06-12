@@ -81,7 +81,7 @@ public class TaskDetailsActivity extends BaseActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent editIntent = new Intent(TaskDetailsActivity.this, EditTaskActivity.class);
+                Intent editIntent = new Intent(TaskDetailsActivity.this, TaskActivity.class);
                 editIntent.putExtra("TASK_NAME", taskName);
                 editIntent.putExtra("INTERVAL", interval);
                 if ("Custom".equals(interval)) {

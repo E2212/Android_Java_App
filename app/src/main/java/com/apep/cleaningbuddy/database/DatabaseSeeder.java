@@ -21,6 +21,7 @@ public class DatabaseSeeder {
     }
 
     public void seedDatabase(Context context) {
+        Database.getDatabase(context);
         if (Room.getAll(context).isEmpty()) {
             seedRooms();
         }
@@ -33,7 +34,7 @@ public class DatabaseSeeder {
             seedUsers();
         }
 
-        if (CompletedTask.getAll(this.context).isEmpty()) {
+        if (CompletedTask.getAll(context).isEmpty()) {
             seedCompletedTasks();
         }
     }

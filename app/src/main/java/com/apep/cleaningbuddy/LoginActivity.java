@@ -15,9 +15,6 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        DatabaseSeeder databaseSeeder = new DatabaseSeeder();
-        databaseSeeder.seedDatabase(this);
-
         EditText etUsername = findViewById(R.id.signup_username_et_id);
         EditText etPassword = findViewById(R.id.signup_password_tv_id);
 
@@ -48,5 +45,8 @@ public class LoginActivity extends BaseActivity {
                 etPassword.setError(getString(R.string.error_invalid_username_password_text));
             }
         });
+
+        DatabaseSeeder databaseSeeder = new DatabaseSeeder();
+        databaseSeeder.seedDatabase(this);
     }
 }

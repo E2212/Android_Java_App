@@ -20,8 +20,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private final OnTaskClickListener listener;
     private final boolean showCheckboxes;
 
-    public TaskAdapter(List<Task> data, OnTaskClickListener listener, boolean showCheckboxes) {
-        this.data = data;
+    public TaskAdapter(List<Task> tasks, OnTaskClickListener listener, boolean showCheckboxes) {
+        this.tasks = tasks;
         this.listener = listener;
         this.showCheckboxes = showCheckboxes;
     }
@@ -35,7 +35,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Task task = data.get(position);
+        Task task = tasks.get(position);
         holder.bind(task, listener);
     }
 
