@@ -3,17 +3,13 @@ package com.apep.cleaningbuddy;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.apep.cleaningbuddy.adapters.RoomAdapter;
 import com.apep.cleaningbuddy.adapters.TaskAdapter;
 import com.apep.cleaningbuddy.interfaces.OnTaskClickListener;
 import com.apep.cleaningbuddy.models.Room;
@@ -35,7 +31,7 @@ public class RoomDetailActivity extends BaseActivity implements OnTaskClickListe
         title.setText(room.getName());
 
         recyclerView = findViewById(R.id.tasks_list_rv);
-        TaskAdapter adapter = new TaskAdapter(room.getTasks(), this);
+        TaskAdapter adapter = new TaskAdapter(room.getTasks(), this, false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -63,7 +59,6 @@ public class RoomDetailActivity extends BaseActivity implements OnTaskClickListe
                     })
                     .show();
         });
-
     }
 
     @Override

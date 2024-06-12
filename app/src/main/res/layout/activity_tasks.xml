@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".TasksActivity">
 
-    <!-- Title and Add Button Container -->
-
     <TextView
         android:id="@+id/activity_tasks_item_title"
         android:layout_width="wrap_content"
@@ -31,7 +29,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"/>
 
-    <!-- Tab Buttons -->
     <LinearLayout
         android:id="@+id/activity_tasks_item_tabButtons"
         android:layout_width="0dp"
@@ -92,27 +89,27 @@
         app:layout_constraintTop_toBottomOf="@+id/activity_tasks_item_tabButtons">
 
         <TextView
-            android:id="@+id/room_id_tf"
+            android:id="@+id/task_id_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/list_header_id"
+            android:text="ID"
             android:textAlignment="textStart" />
 
         <TextView
-            android:id="@+id/room_name_tf"
+            android:id="@+id/task_name_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="@string/rooms_list_header_name"
+            android:layout_weight="2"
+            android:text="Task"
             android:textAlignment="textStart" />
 
         <TextView
-            android:id="@+id/room_task_count_tf"
+            android:id="@+id/task_complete_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/rooms_list_header_tasks"
+            android:layout_weight="1.5"
+            android:text="Complete task"
             android:textAlignment="textStart" />
     </LinearLayout>
 
@@ -125,10 +122,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_list_headers" />
+        app:layout_constraintTop_toBottomOf="@id/task_list_headers" />
 
-
-    <!-- Bottom [Tasks] nav bar -->
     <LinearLayout
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"

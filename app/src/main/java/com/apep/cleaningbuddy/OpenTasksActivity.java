@@ -2,19 +2,22 @@ package com.apep.cleaningbuddy;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TableRow;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class OpenTasksActivity extends BaseActivity {
+import com.apep.cleaningbuddy.adapters.TaskAdapter;
+import com.apep.cleaningbuddy.models.Task;
+import com.apep.cleaningbuddy.interfaces.OnTaskClickListener;
 
-    private Button yourTasksButton;
-    private Button openTasksButton;
-    private Button allTasksButton;
-    private Button addButton;
+import java.util.List;
+
+public class OpenTasksActivity extends BaseActivity implements OnTaskClickListener {
+
+    private RecyclerView recyclerView;
+    private List<Task> openTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,44 +25,39 @@ public class OpenTasksActivity extends BaseActivity {
         setContentView(R.layout.activity_open_tasks);
         addNavbarListeners();
 
-        yourTasksButton = findViewById(R.id.openTasks_yourTasks_btn_id);
-        openTasksButton = findViewById(R.id.openTasks_openTasks_btn_id);
-        allTasksButton = findViewById(R.id.openTasks_allTasks_btn_id);
-        addButton = findViewById(R.id.openTasks_add_btn_id);
+        openTasks = Task.getOpenTasks(this); // Fetch open tasks from the database
+        recyclerView = findViewById(R.id.open_tasks_list_rv);
+        TaskAdapter adapter = new TaskAdapter(openTasks, this, true);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        yourTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to TasksActivity
-                Intent intent = new Intent(OpenTasksActivity.this, TasksActivity.class);
-                startActivity(intent);
-            }
+        Button yourTasksButton = findViewById(R.id.openTasks_yourTasks_btn_id);
+        Button openTasksButton = findViewById(R.id.openTasks_openTasks_btn_id);
+        Button allTasksButton = findViewById(R.id.openTasks_allTasks_btn_id);
+        Button addButton = findViewById(R.id.openTasks_add_btn_id);
+
+        yourTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(OpenTasksActivity.this, TasksActivity.class);
+            startActivity(intent);
         });
 
-        openTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle "Open tasks" button click
-                Toast.makeText(OpenTasksActivity.this, "You are already in Open Tasks", Toast.LENGTH_SHORT).show();
-            }
+        openTasksButton.setOnClickListener(v -> {
+            Toast.makeText(OpenTasksActivity.this, "You are already in Open Tasks", Toast.LENGTH_SHORT).show();
         });
 
-        allTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to AllTasksActivity
-                Intent intent = new Intent(OpenTasksActivity.this, AllTasksActivity.class);
-                startActivity(intent);
-            }
+        allTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(OpenTasksActivity.this, AllTasksActivity.class);
+            startActivity(intent);
         });
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to NewTaskActivity
-                Intent intent = new Intent(OpenTasksActivity.this, NewTaskActivity.class);
-                startActivity(intent);
-            }
+        addButton.setOnClickListener(v -> {
+            Intent intent = new Intent(OpenTasksActivity.this, NewTaskActivity.class);
+            startActivity(intent);
         });
+    }
+
+    @Override
+    public void onTaskClick(Task task) {
+        // Handle task click
     }
 }
