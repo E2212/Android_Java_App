@@ -8,9 +8,11 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.apep.cleaningbuddy.TaskActivity;
 import com.apep.cleaningbuddy.database.Database;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity(
@@ -32,6 +34,46 @@ public class Task {
     @Ignore
     private User user;
 
+    @Ignore
+    private List<CompletedTask> taskHistory = new ArrayList<>();
+    @Ignore
+    private Room room;
+
+    public static void completeTasks(Context context, List<Task> tasks) {
+        for (Task task : tasks) {
+            CompletedTask completedTask = new CompletedTask();
+            completedTask.setTaskId(task.getId());
+            completedTask.setUserId(User.getLoggedInUser().getId());
+            completedTask.setCompletionDate(new Date());
+            CompletedTask.addCompletedTask(context, completedTask);
+        }
+    }
+
+    public static List<Task> getOpenUserTasks(Context context) {
+        List<Task> tasks = Database.getDatabase(context).taskDao().getUserTasks(User.getLoggedInUser().getId());
+        for (Task task : tasks) {
+            CompletedTask completedTask = Database.getDatabase(context).completedTaskDao().getLatestCompletedTasks(task.getId());
+
+            if (completedTask != null) {
+                // Wanneer het verschil in dagen met het laatst voltooide moment groter
+                // of gelijk is aan de interval verwijderen we deze uit de lijst
+                Date now = new Date();
+                long millisDifference = now.getTime() - completedTask.getCompletionDate().getTime();
+                long dayDifference = millisDifference / (1000 * 60 * 60 * 24);
+
+                if (dayDifference >= task.interval) {
+                    tasks.remove(task);
+                }
+            }
+        }
+
+        return tasks;
+    }
+
+    public static Task getTask(Context context, int taskId) {
+        return Database.getDatabase(context).taskDao().getTask(taskId);
+    }
+
     public boolean isCompleted() {
         return completed;
     }
@@ -39,6 +81,7 @@ public class Task {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
     public Integer getId() {
         return id;
     }
@@ -106,7 +149,23 @@ public class Task {
     }
 
     public static List<Task> getAll(Context context) {
-        return Database.getDatabase(context).taskDao().getAll();
+        List<Task> tasks = Database.getDatabase(context).taskDao().getAll();
+        for (Task task : tasks) {
+            if (task.getRoomId() != null) {
+                Room room = Database.getDatabase(context).roomDao().getRoom(task.getRoomId());
+                if (room != null) {
+                    task.setRoom(room);
+                }
+            }
+
+            if (task.getUserId() != null) {
+                User user = Database.getDatabase(context).userDao().getUser(task.getUserId());
+                if (user != null) {
+                    task.setUser(user);
+                }
+            }
+        }
+        return tasks;
     }
 
     public User getUser() {
@@ -115,6 +174,37 @@ public class Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<CompletedTask> getTaskHistory(Context context) {
+        if (taskHistory.isEmpty()) {
+            Database.getDatabase(context).completedTaskDao().getCompletedTasks(id);
+            for (CompletedTask completedTask : taskHistory) {
+                User user = Database.getDatabase(context).userDao().getUser(completedTask.getUserId());
+                if (user != null) {
+                    completedTask.setUser(user);
+                }
+            }
+        }
+
+        return taskHistory;
+    }
+
+    public void setTaskHistory(List<CompletedTask> taskHistory) {
+        this.taskHistory = taskHistory;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    private void setRoom(Room room) {
+
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     public static List<Task> getOpenTasks(Context context) {

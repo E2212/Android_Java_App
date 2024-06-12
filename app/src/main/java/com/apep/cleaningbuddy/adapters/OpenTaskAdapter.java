@@ -3,25 +3,26 @@ package com.apep.cleaningbuddy.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apep.cleaningbuddy.R;
-import com.apep.cleaningbuddy.interfaces.OnOpenTaskClickListener;
-import com.apep.cleaningbuddy.interfaces.OnTaskClickListener;
 import com.apep.cleaningbuddy.models.Task;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class OpenTaskAdapter extends RecyclerView.Adapter<OpenTaskAdapter.ViewHolder> {
-    private final List<Task> data;
-    private final OnOpenTaskClickListener listener;
+    private final List<Task> tasks;
+    private final List<Boolean> checkedStates;
 
-    public OpenTaskAdapter(List<Task> data, OnOpenTaskClickListener listener) {
-        this.data = data;
-        this.listener = listener;
+    public OpenTaskAdapter(List<Task> tasks) {
+        this.tasks = tasks;
+        this.checkedStates = new ArrayList<>(Collections.nCopies(tasks.size(), false));
     }
 
     @NonNull
@@ -31,39 +32,51 @@ public class OpenTaskAdapter extends RecyclerView.Adapter<OpenTaskAdapter.ViewHo
                 .from(parent.getContext())
                 .inflate(R.layout.open_task_row, parent, false);
 
-        return new ViewHolder(view);
+        return new ViewHolder(view, checkedStates);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Task room = data.get(position);
-        holder.bind(room, listener);
+        Task task = tasks.get(position);
+        holder.bind(task, position);
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return tasks.size();
+    }
+
+    public List<Task> getCheckedTasks() {
+        List<Task> checkedTasks = new ArrayList<>();
+        for (int i = 0; i < checkedStates.size(); i++) {
+            if (checkedStates.get(i)) {
+                checkedTasks.add(tasks.get(i));
+            }
+        }
+        return checkedTasks;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final List<Boolean> checkedStates;
+        private final CheckBox taskCompletedTf;
         private final TextView taskIdTf;
         private final TextView taskNameTf;
-        private final TextView taskAssignedTf;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, List<Boolean> checkedStates) {
             super(itemView);
+            this.checkedStates = checkedStates;
             taskIdTf = itemView.findViewById(R.id.task_id_tf);
             taskNameTf = itemView.findViewById(R.id.task_name_tf);
-            taskAssignedTf = itemView.findViewById(R.id.task_assigned_tf);
+            taskCompletedTf = itemView.findViewById(R.id.task_confirm_tf);
         }
 
-        public void bind(Task task, OnOpenTaskClickListener listener) {
+        public void bind(Task task, int position) {
             String id = "T-" + task.getId().toString();
             taskIdTf.setText(id);
             taskNameTf.setText(task.getName());
-            taskAssignedTf.setText((task.getUser() == null ? "Unassigned" : task.getUser().getUsername()));
 
-            itemView.setOnClickListener(v -> listener.onTaskClick(task));
+            taskCompletedTf.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                checkedStates.set(position, isChecked);
+            });
         }
-
     }
 }

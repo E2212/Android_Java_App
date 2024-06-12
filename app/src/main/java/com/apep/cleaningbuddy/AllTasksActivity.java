@@ -32,13 +32,14 @@ public class AllTasksActivity extends BaseActivity implements OnTaskClickListene
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         Button yourTasksButton = findViewById(R.id.allTasks_yourTasks_btn_id);
         Button openTasksButton = findViewById(R.id.allTasks_openTasks_btn_id);
         Button allTasksButton = findViewById(R.id.allTasks_allTasks_btn_id);
         Button addButton = findViewById(R.id.allTasks_add_btn_id);
 
         yourTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(AllTasksActivity.this, TasksActivity.class);
+            Intent intent = new Intent(AllTasksActivity.this, YourTasksActivity.class);
             startActivity(intent);
         });
 
@@ -51,8 +52,9 @@ public class AllTasksActivity extends BaseActivity implements OnTaskClickListene
             Toast.makeText(AllTasksActivity.this, "You are already in All Tasks", Toast.LENGTH_SHORT).show();
         });
 
+
         addButton.setOnClickListener(v -> {
-            Intent intent = new Intent(AllTasksActivity.this, NewTaskActivity.class);
+            Intent intent = new Intent(AllTasksActivity.this, TaskActivity.class);
             startActivity(intent);
         });
     }

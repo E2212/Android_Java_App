@@ -4,12 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.apep.cleaningbuddy.database.Database;
 import com.apep.cleaningbuddy.database.DatabaseSeeder;
 import com.apep.cleaningbuddy.exceptions.UserNotFoundException;
 import com.apep.cleaningbuddy.models.User;
@@ -19,9 +14,6 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        DatabaseSeeder databaseSeeder = new DatabaseSeeder();
-        databaseSeeder.seedDatabase(this);
 
         EditText etUsername = findViewById(R.id.signup_username_et_id);
         EditText etPassword = findViewById(R.id.signup_password_tv_id);
@@ -46,12 +38,15 @@ public class LoginActivity extends BaseActivity {
             }
 
             if (valid) {
-                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(LoginActivity.this, YourTasksActivity.class);
                 startActivity(intent);
                 finish();
             } else {
                 etPassword.setError(getString(R.string.error_invalid_username_password_text));
             }
         });
+
+        DatabaseSeeder databaseSeeder = new DatabaseSeeder();
+        databaseSeeder.seedDatabase(this);
     }
 }

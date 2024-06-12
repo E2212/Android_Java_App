@@ -26,7 +26,6 @@
         android:foreground="@drawable/add_button"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
-        app:layout_constraintStart_toEndOf="@+id/tv_title"
         app:layout_constraintTop_toTopOf="@+id/tv_title"
         app:layout_constraintVertical_bias="0.0" />
 

@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.apep.cleaningbuddy.adapters.TaskAdapter;
-import com.apep.cleaningbuddy.models.Task;
 import com.apep.cleaningbuddy.interfaces.OnTaskClickListener;
+import com.apep.cleaningbuddy.models.Task;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class OpenTasksActivity extends BaseActivity implements OnTaskClickListen
         Button addButton = findViewById(R.id.openTasks_add_btn_id);
 
         yourTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(OpenTasksActivity.this, TasksActivity.class);
+            Intent intent = new Intent(OpenTasksActivity.this, YourTasksActivity.class);
             startActivity(intent);
         });
 
@@ -51,7 +51,7 @@ public class OpenTasksActivity extends BaseActivity implements OnTaskClickListen
         });
 
         addButton.setOnClickListener(v -> {
-            Intent intent = new Intent(OpenTasksActivity.this, NewTaskActivity.class);
+            Intent intent = new Intent(OpenTasksActivity.this, TaskActivity.class);
             startActivity(intent);
         });
     }

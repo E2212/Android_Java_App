@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintBottom_toTopOf="@id/button_separator"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Task name -->
+            <TextView
+                android:id="@+id/et_task_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Task name *"/>
+
+            <EditText
+                android:id="@+id/et_task_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:maxLines="1" />
+
+            <!-- Interval -->
+            <TextView
+                android:id="@+id/activity_new_task_item_interval_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Interval"/>
+
+            <Spinner
+                android:id="@+id/sp_task_interval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
+
+            <!-- Custom Interval -->
+            <TextView
+                android:id="@+id/label_task_custom_interval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Custom interval"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sp_task_interval"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/container_task_custom_interval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:labelFor="@id/et_task_custom_interval" >
+
+                <Spinner
+                    android:id="@+id/sp_task_custom_interval_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/et_task_custom_interval"
+                    android:layout_width="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:importantForAutofill="no"
+                    android:inputType="number"/>
+            </LinearLayout>
+
+            <!-- Description -->
+            <TextView
+                android:id="@+id/activity_new_task_item_descriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:importantForAutofill="no"
+                android:text="Description" />
+
+            <EditText
+                android:id="@+id/et_task_description"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:importantForAutofill="no"
+                android:maxLines="2"
+                android:inputType="text|textMultiLine"
+                android:maxLength="100"
+                android:imeOptions="actionDone"
+                android:scrollHorizontally="true"/>
+
+            <!-- Room -->
+            <TextView
+                android:id="@+id/activity_new_task_item_room_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Room" />
+
+            <Spinner
+                android:id="@+id/sp_task_room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
+
+            <!-- Assigned User -->
+            <TextView
+                android:id="@+id/activity_new_task_item_assigned_user_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Assigned user"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
+
+            <Spinner
+                android:id="@+id/sp_task_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Guidelines-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <View
+        android:id="@+id/button_separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_buttons_container"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start" />
+
+    <!-- Edit buttons -->
+    <LinearLayout
+        android:id="@+id/edit_buttons_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:gravity="center"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start" >
+
+        <Button
+            android:id="@+id/btn_cancel_edit"
+            style="@style/Widget.Cleaner.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:text="@string/edit_btn_cancel" />
+
+        <Button
+            android:id="@+id/btn_save_edit"
+            style="@style/Widget.Cleaner.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:text="@string/edit_btn_save" />
+    </LinearLayout>
+
+    <!-- Bottom [Tasks] nav bar -->
+    <LinearLayout
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_rooms"
+            android:textColor="@color/dark_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_rooms_text"
+            style="@style/Widget.Cleaner.Button" />
+
+        <Button
+            android:id="@+id/btn_tasks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_tasks_text"
+            style="@style/Widget.Cleaner.Button" />
+
+        <Button
+            android:id="@+id/btn_profile"
+            android:textColor="@color/dark_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_profile_text"
+            style="@style/Widget.Cleaner.Button" />
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

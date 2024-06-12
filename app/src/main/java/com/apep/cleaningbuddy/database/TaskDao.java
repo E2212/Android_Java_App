@@ -22,4 +22,10 @@ public interface TaskDao {
     void delete(Task task);
     @Query("SELECT * FROM task WHERE roomId = :roomId ")
     List<Task> getRoomTasks(int roomId);
+
+    @Query("SELECT * FROM task WHERE userId = :userId ")
+    List<Task> getUserTasks(int userId);
+
+    @Query("SELECT * FROM task WHERE id = :taskId ")
+    Task getTask(int taskId);
 }

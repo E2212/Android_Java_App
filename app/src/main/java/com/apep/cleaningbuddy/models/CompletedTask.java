@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
@@ -28,6 +29,9 @@ public class CompletedTask {
     private Date completionDate;
     private Integer taskId;
     private Integer userId;
+
+    @Ignore
+    private User user;
 
     public Integer getId() {
         return id;
@@ -69,5 +73,13 @@ public class CompletedTask {
 
     public static List<CompletedTask> getAll(Context context) {
         return Database.getDatabase(context).completedTaskDao().getAll();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

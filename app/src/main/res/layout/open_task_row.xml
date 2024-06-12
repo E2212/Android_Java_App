@@ -22,23 +22,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:id="@+id/task_assigned_wrapper"
-        android:layout_weight="2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/task_assigned_tf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_border"
-            android:textColor="@color/black"
-            android:ellipsize="end"
-            android:maxLines="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+    <CheckBox
+        android:id="@+id/task_confirm_tf"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_weight="1" />
 </LinearLayout>
