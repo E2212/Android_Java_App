@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".TaskDetailsActivity">
 
-    <!-- Task Name -->
-
-    <!-- Edit Button -->
-
-    <!-- Delete Button -->
     <TextView
         android:id="@+id/activity_task_details_item_taskName"
         android:layout_width="wrap_content"
@@ -148,45 +143,43 @@
         app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_descriptionLabel"
         app:layout_constraintStart_toEndOf="@id/activity_task_details_item_descriptionLabel" />
 
-    <!-- Bottom Navigation Buttons -->
+    <!-- Bottom [Tasks] nav bar -->
     <LinearLayout
-        android:id="@+id/activity_task_details_item_bottomNavigation"
-        android:layout_width="0dp"
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
-        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            android:id="@+id/btn_rooms"
+            android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:layout_weight="1"
-            android:background="@android:color/black"
             android:text="@string/tab_rooms_text"
-            android:textColor="@android:color/white" />
+            style="@style/Widget.Cleaner.Button" />
 
         <Button
+            android:id="@+id/btn_tasks"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:layout_weight="1"
-            android:background="@android:color/black"
-            android:padding="12dp"
             android:text="@string/tab_tasks_text"
-            android:textColor="@android:color/white" />
+            style="@style/Widget.Cleaner.Button" />
 
         <Button
+            android:id="@+id/btn_profile"
+            android:textColor="@color/dark_grey"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:text="Profile"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="1"
+            android:text="@string/tab_profile_text"
+            style="@style/Widget.Cleaner.Button" />
     </LinearLayout>
 
 

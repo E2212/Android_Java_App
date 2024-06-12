@@ -91,49 +91,10 @@
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/room_task_list_headers" />
-
-
-    <LinearLayout
-        android:id="@+id/bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/btn_rooms"
-            style="@style/Widget.Cleaner.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/tab_rooms" />
-
-        <Button
-            android:id="@+id/btn_tasks"
-            style="@style/Widget.Cleaner.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/tab_tasks"
-            android:textColor="@color/dark_grey" />
-
-        <Button
-            android:id="@+id/btn_profile"
-            style="@style/Widget.Cleaner.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/tab_profile"
-            android:textColor="@color/dark_grey" />
-    </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_start"
@@ -149,5 +110,42 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="20dp" />
 
+    <!-- Bottom [Rooms] nav bar -->
+    <LinearLayout
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <Button
+            android:id="@+id/btn_rooms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_rooms_text"
+            style="@style/Widget.Cleaner.Button" />
+
+        <Button
+            android:id="@+id/btn_tasks"
+            android:textColor="@color/dark_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_tasks_text"
+            style="@style/Widget.Cleaner.Button" />
+
+        <Button
+            android:id="@+id/btn_profile"
+            android:textColor="@color/dark_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_profile_text"
+            style="@style/Widget.Cleaner.Button" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

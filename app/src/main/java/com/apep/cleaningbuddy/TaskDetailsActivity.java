@@ -13,7 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class TaskDetailsActivity extends AppCompatActivity {
+public class TaskDetailsActivity extends BaseActivity {
 
     private TextView taskNameTextView;
     private TextView intervalTextView;
@@ -29,6 +29,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_details);
+        addNavbarListeners();
 
         taskNameTextView = findViewById(R.id.activity_task_details_item_taskName);
         intervalTextView = findViewById(R.id.activity_task_details_item_interval);

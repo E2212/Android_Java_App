@@ -209,6 +209,45 @@
     </LinearLayout>
 
 
+    <!-- Bottom [Tasks] nav bar -->
+    <LinearLayout
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_rooms"
+            android:textColor="@color/dark_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_rooms_text"
+            style="@style/Widget.Cleaner.Button" />
+
+        <Button
+            android:id="@+id/btn_tasks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_tasks_text"
+            style="@style/Widget.Cleaner.Button" />
+
+        <Button
+            android:id="@+id/btn_profile"
+            android:textColor="@color/dark_grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tab_profile_text"
+            style="@style/Widget.Cleaner.Button" />
+    </LinearLayout>
+
 
 
 

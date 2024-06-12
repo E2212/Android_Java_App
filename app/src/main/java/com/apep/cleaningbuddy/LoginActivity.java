@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.apep.cleaningbuddy.database.Database;
@@ -13,11 +14,12 @@ import com.apep.cleaningbuddy.database.DatabaseSeeder;
 import com.apep.cleaningbuddy.exceptions.UserNotFoundException;
 import com.apep.cleaningbuddy.models.User;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         DatabaseSeeder databaseSeeder = new DatabaseSeeder();
         databaseSeeder.seedDatabase(this);
 
@@ -48,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else {
-                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                etPassword.setError(getString(R.string.error_invalid_username_password_text));
             }
         });
     }

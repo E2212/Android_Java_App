@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.apep.cleaningbuddy.models.Room;
 import com.apep.cleaningbuddy.utils.InputValidations;
 
-public class RoomActivity extends AppCompatActivity {
+public class RoomActivity extends BaseActivity {
 
     private Room room;
 
@@ -19,6 +19,7 @@ public class RoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room);
+        addNavbarListeners();
 
         int roomId = getIntent().getIntExtra("ROOM_ID", 0);
         if (roomId != 0) {
@@ -72,27 +73,6 @@ public class RoomActivity extends AppCompatActivity {
             } else {
                 etName.setError(validator.getErrors());
             }
-        });
-
-        Button roomsButton = findViewById(R.id.btn_rooms);
-        roomsButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, RoomsActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        Button tasksButton = findViewById(R.id.btn_tasks);
-        tasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, TasksActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        Button profileButton = findViewById(R.id.btn_profile);
-        profileButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
-            finish();
         });
     }
 }

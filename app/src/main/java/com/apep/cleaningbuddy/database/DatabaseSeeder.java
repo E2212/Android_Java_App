@@ -5,8 +5,6 @@ import android.content.Context;
 import com.apep.cleaningbuddy.models.Room;
 import com.apep.cleaningbuddy.models.Task;
 import com.apep.cleaningbuddy.models.User;
-import com.apep.cleaningbuddy.models.Language;
-import com.apep.cleaningbuddy.models.Theme;
 
 import java.security.SecureRandom;
 import java.util.Random;
@@ -94,18 +92,16 @@ public class DatabaseSeeder {
     }
 
     private void seedUsers() {
-        createUser("Spongebob", Theme.DARK, Language.ENGLISH);
-        createUser("Patrick", Theme.LIGHT, Language.DUTCH);
-        createUser("Squidward", Theme.DARK, Language.DUTCH);
-        createUser("Mr. Krabs", Theme.LIGHT, Language.ENGLISH);
+        createUser("Spongebob");
+        createUser("Patrick");
+        createUser("Squidward");
+        createUser("Mr. Krabs");
     }
 
-    private void createUser(String username, Theme theme, Language language) {
+    private void createUser(String username) {
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setPassword(generateRandomPassword());
-        newUser.setTheme(theme);
-        newUser.setLanguage(language);
         User.addUser(this.context, newUser);
     }
 

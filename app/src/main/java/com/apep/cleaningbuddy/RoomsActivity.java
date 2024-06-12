@@ -18,7 +18,7 @@ import com.apep.cleaningbuddy.models.Room;
 
 import java.util.List;
 
-public class RoomsActivity extends AppCompatActivity implements OnRoomClickListener {
+public class RoomsActivity extends BaseActivity implements OnRoomClickListener {
     private RecyclerView recyclerView;
     private List<Room> rooms;
 
@@ -26,6 +26,7 @@ public class RoomsActivity extends AppCompatActivity implements OnRoomClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rooms);
+        addNavbarListeners();
 
         rooms = Room.getAll(this);
         recyclerView = findViewById(R.id.rooms_list_rv);
@@ -36,25 +37,6 @@ public class RoomsActivity extends AppCompatActivity implements OnRoomClickListe
         Button addRoomButton = findViewById(R.id.btn_add_room);
         addRoomButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, RoomActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        Button roomsButton = findViewById(R.id.btn_rooms);
-        roomsButton.setOnClickListener(v -> {
-            // Current Activity, no action needed
-        });
-
-        Button tasksButton = findViewById(R.id.btn_tasks);
-        tasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, TasksActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        Button profileButton = findViewById(R.id.btn_profile);
-        profileButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
             finish();
         });

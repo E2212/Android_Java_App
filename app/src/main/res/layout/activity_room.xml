@@ -7,64 +7,85 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
         android:layout_marginTop="16dp"
-        android:text="Title"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_room_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:hint="@string/et_room_name_req"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <View
-        android:id="@+id/edit_bar"
-        android:layout_width="match_parent"
+        android:id="@+id/button_separator"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/light_grey"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintBottom_toTopOf="@id/bottom_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cancel_edit"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start" />
 
     <Button
         android:id="@+id/btn_cancel_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_btn_cancel"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        android:padding="0dp"
+        android:layout_marginBottom="15dp"
+        style="@style/Widget.Cleaner.Button"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
         app:layout_constraintEnd_toStartOf="@+id/btn_save_edit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_bar" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_save_edit"
+        style="@style/Widget.Cleaner.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="0dp"
         android:text="@string/edit_btn_save"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_cancel_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_cancel_edit"
-        app:layout_constraintTop_toBottomOf="@id/edit_bar" />
+        app:layout_constraintTop_toTopOf="@+id/btn_cancel_edit" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <!-- Bottom [Rooms] nav bar -->
     <LinearLayout
-        android:id="@+id/bottom_bar"
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -76,37 +97,28 @@
 
         <Button
             android:id="@+id/btn_rooms"
-            style="@style/Widget.Cleaner.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_rooms" />
+            android:text="@string/tab_rooms_text"
+            style="@style/Widget.Cleaner.Button" />
 
         <Button
             android:id="@+id/btn_tasks"
-            style="@style/Widget.Cleaner.Button"
             android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_tasks" />
+            android:text="@string/tab_tasks_text"
+            style="@style/Widget.Cleaner.Button" />
 
         <Button
             android:id="@+id/btn_profile"
-            style="@style/Widget.Cleaner.Button"
             android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_profile" />
+            android:text="@string/tab_profile_text"
+            style="@style/Widget.Cleaner.Button" />
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
