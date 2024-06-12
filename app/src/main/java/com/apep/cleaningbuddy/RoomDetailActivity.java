@@ -31,7 +31,7 @@ public class RoomDetailActivity extends BaseActivity implements OnTaskClickListe
         title.setText(room.getName());
 
         recyclerView = findViewById(R.id.tasks_list_rv);
-        TaskAdapter adapter = new TaskAdapter(room.getTasks(), this, false);
+        TaskAdapter adapter = new TaskAdapter(room.getTasks(), this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

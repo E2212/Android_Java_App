@@ -22,4 +22,8 @@ public interface CompletedTaskDao {
 
     @Query("SELECT * FROM CompletedTask WHERE taskId = :taskId ORDER BY completionDate DESC LIMIT 1")
     CompletedTask getLatestCompletedTasks(int taskId);
+
+    @Query("DELETE FROM CompletedTask WHERE taskId = :taskId")
+
+    void deleteTask(int taskId);
 }

@@ -25,7 +25,7 @@ public class YourTasksActivity extends BaseActivity {
         addTabListeners();
         addNewTaskButton();
 
-        tasks = Task.getOpenUserTasks(this);
+        tasks = Task.getOpenUserTasks(YourTasksActivity.this);
         recyclerView = findViewById(R.id.open_tasks_list_rv);
         OpenTaskAdapter adapter = new OpenTaskAdapter(tasks);
         recyclerView.setAdapter(adapter);
@@ -64,14 +64,14 @@ public class YourTasksActivity extends BaseActivity {
 
         Button openTasksButton = findViewById(R.id.tasks_open_task_tab_id);
         openTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(YourTasksActivity.this, OpenTasksActivity.class);
+            Intent intent = new Intent(this, OpenTasksActivity.class);
             startActivity(intent);
             finish();
         });
 
         Button allTasksButton = findViewById(R.id.tasks_all_tasks_tab_id);
         allTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(YourTasksActivity.this, AllTasksActivity.class);
+            Intent intent = new Intent(this, AllTasksActivity.class);
             startActivity(intent);
             finish();
         });

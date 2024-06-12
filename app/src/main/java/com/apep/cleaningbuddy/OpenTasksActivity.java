@@ -8,56 +8,71 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.apep.cleaningbuddy.adapters.TaskAdapter;
-import com.apep.cleaningbuddy.interfaces.OnTaskClickListener;
+import com.apep.cleaningbuddy.adapters.OpenTaskAdapter;
 import com.apep.cleaningbuddy.models.Task;
 
 import java.util.List;
 
-public class OpenTasksActivity extends BaseActivity implements OnTaskClickListener {
-
+public class OpenTasksActivity extends BaseActivity {
     private RecyclerView recyclerView;
-    private List<Task> openTasks;
+    private List<Task> tasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_tasks);
         addNavbarListeners();
+        addTabListeners();
+        addNewTaskButton();
 
-        openTasks = Task.getOpenTasks(this); // Fetch open tasks from the database
+        tasks = Task.getOpenTasks(OpenTasksActivity.this);
         recyclerView = findViewById(R.id.open_tasks_list_rv);
-        TaskAdapter adapter = new TaskAdapter(openTasks, this, true);
+        OpenTaskAdapter adapter = new OpenTaskAdapter(tasks);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Button yourTasksButton = findViewById(R.id.openTasks_yourTasks_btn_id);
-        Button openTasksButton = findViewById(R.id.openTasks_openTasks_btn_id);
-        Button allTasksButton = findViewById(R.id.openTasks_allTasks_btn_id);
-        Button addButton = findViewById(R.id.openTasks_add_btn_id);
+        Button confirmBtn = findViewById(R.id.btn_completed_confirm);
+        confirmBtn.setOnClickListener(v -> {
+            List<Task> confirmedTasks = adapter.getCheckedTasks();
+            if (!confirmedTasks.isEmpty()) {
+                Toast.makeText(this, getString(R.string.confirm_completed_task_text, String.valueOf(confirmedTasks.size())), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getString(R.string.confirm_completed_none_task_text), Toast.LENGTH_SHORT).show();
+            }
+            Task.completeTasks(this, confirmedTasks);
 
-        yourTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(OpenTasksActivity.this, YourTasksActivity.class);
-            startActivity(intent);
+            tasks.clear();
+            tasks.addAll(Task.getOpenTasks(this));
+            recyclerView.getAdapter().notifyDataSetChanged();
         });
+    }
 
-        openTasksButton.setOnClickListener(v -> {
-            Toast.makeText(OpenTasksActivity.this, "You are already in Open Tasks", Toast.LENGTH_SHORT).show();
-        });
-
-        allTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(OpenTasksActivity.this, AllTasksActivity.class);
-            startActivity(intent);
-        });
-
+    private void addNewTaskButton() {
+        Button addButton = findViewById(R.id.task_add_btn_id);
         addButton.setOnClickListener(v -> {
-            Intent intent = new Intent(OpenTasksActivity.this, TaskActivity.class);
+            Intent intent = new Intent(this, TaskActivity.class);
             startActivity(intent);
         });
     }
 
-    @Override
-    public void onTaskClick(Task task) {
-        // Handle task click
+    private void addTabListeners() {
+        Button yourTasksButton = findViewById(R.id.task_your_task_tab_id);
+        yourTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, YourTasksActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        Button openTasksButton = findViewById(R.id.tasks_open_task_tab_id);
+        openTasksButton.setOnClickListener(v -> {
+            //
+        });
+
+        Button allTasksButton = findViewById(R.id.tasks_all_tasks_tab_id);
+        allTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, AllTasksActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 }

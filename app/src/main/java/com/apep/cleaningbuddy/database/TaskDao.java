@@ -28,4 +28,7 @@ public interface TaskDao {
 
     @Query("SELECT * FROM task WHERE id = :taskId ")
     Task getTask(int taskId);
+
+    @Query("SELECT * FROM task WHERE userId IS NULL ")
+    List<Task> getAllOpenTasks();
 }
