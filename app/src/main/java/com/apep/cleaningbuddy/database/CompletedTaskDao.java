@@ -16,4 +16,10 @@ public interface CompletedTaskDao {
 
     @Insert
     void insert(CompletedTask completedTask);
+
+    @Query("SELECT * FROM CompletedTask WHERE taskId = :taskId")
+    List<CompletedTask> getCompletedTasks(int taskId);
+
+    @Query("SELECT * FROM CompletedTask WHERE taskId = :taskId ORDER BY completionDate DESC LIMIT 1")
+    CompletedTask getLatestCompletedTasks(int taskId);
 }

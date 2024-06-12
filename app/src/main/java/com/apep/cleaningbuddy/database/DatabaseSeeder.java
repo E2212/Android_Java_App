@@ -19,16 +19,15 @@ public class DatabaseSeeder {
     }
 
     public void seedDatabase(Context context) {
-        this.context = context;
-        if (Room.getAll(this.context).isEmpty()) {
+        if (Room.getAll(context).isEmpty()) {
             seedRooms();
         }
 
-        if (Task.getAll(this.context).isEmpty()) {
+        if (Task.getAll(context).isEmpty()) {
             seedTasks();
         }
 
-        if (User.getAll(this.context).isEmpty()) {
+        if (User.getAll(context).isEmpty()) {
             seedUsers();
         }
     }

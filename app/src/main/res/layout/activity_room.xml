@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <!-- Title -->
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="0dp"
@@ -19,56 +20,32 @@
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Room name -->
+    <TextView
+        android:id="@+id/activity_new_task_item_taskNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/et_room_name_req"
+        android:labelFor="@id/et_room_name"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
     <EditText
         android:id="@+id/et_room_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:hint="@string/et_room_name_req"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_new_task_item_taskNameLabel" />
 
-    <View
-        android:id="@+id/button_separator"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/light_grey"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_cancel_edit"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
-        app:layout_constraintStart_toStartOf="@+id/guideline_start" />
-
-    <Button
-        android:id="@+id/btn_cancel_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit_btn_cancel"
-        android:padding="0dp"
-        android:layout_marginBottom="15dp"
-        style="@style/Widget.Cleaner.Button"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
-        app:layout_constraintEnd_toStartOf="@+id/btn_save_edit"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_save_edit"
-        style="@style/Widget.Cleaner.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:text="@string/edit_btn_save"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_cancel_edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_cancel_edit"
-        app:layout_constraintTop_toTopOf="@+id/btn_cancel_edit" />
-
+    <!-- Guidelines-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_start"
         android:layout_width="wrap_content"
@@ -82,6 +59,52 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="20dp" />
+
+    <View
+        android:id="@+id/button_separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_buttons_container"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start" />
+
+    <!-- Edit buttons -->
+    <LinearLayout
+        android:id="@+id/edit_buttons_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:gravity="center"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start" >
+
+        <Button
+            android:id="@+id/btn_cancel_edit"
+            style="@style/Widget.Cleaner.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:text="@string/edit_btn_cancel" />
+
+        <Button
+            android:id="@+id/btn_save_edit"
+            style="@style/Widget.Cleaner.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:padding="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:text="@string/edit_btn_save" />
+    </LinearLayout>
 
     <!-- Bottom [Rooms] nav bar -->
     <LinearLayout

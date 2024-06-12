@@ -4,12 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.apep.cleaningbuddy.database.Database;
 import com.apep.cleaningbuddy.database.DatabaseSeeder;
 import com.apep.cleaningbuddy.exceptions.UserNotFoundException;
 import com.apep.cleaningbuddy.models.User;
@@ -46,7 +41,7 @@ public class LoginActivity extends BaseActivity {
             }
 
             if (valid) {
-                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(LoginActivity.this, YourTasksActivity.class);
                 startActivity(intent);
                 finish();
             } else {

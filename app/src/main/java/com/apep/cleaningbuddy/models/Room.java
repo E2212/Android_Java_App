@@ -89,4 +89,9 @@ public class Room {
         }
         return rooms;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

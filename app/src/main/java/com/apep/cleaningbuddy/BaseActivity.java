@@ -32,7 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         Button tasksButton = findViewById(R.id.btn_tasks);
         tasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, TasksActivity.class);
+            Intent intent = new Intent(this, YourTasksActivity.class);
             startActivity(intent);
             finish();
         });

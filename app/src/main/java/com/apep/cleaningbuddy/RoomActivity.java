@@ -2,6 +2,7 @@ package com.apep.cleaningbuddy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import com.apep.cleaningbuddy.utils.InputValidations;
 public class RoomActivity extends BaseActivity {
 
     private Room room;
+    private TextView etName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +29,16 @@ public class RoomActivity extends BaseActivity {
         }
 
         TextView title = findViewById(R.id.tv_title);
-        EditText etName = findViewById(R.id.et_room_name);
+        etName = findViewById(R.id.et_room_name);
         if (room != null) {
             title.setText(getString(R.string.room_edit_title));
             etName.setText(room.getName());
         } else {
             title.setText(getString(R.string.room_add_title));
         }
-
+    }
+    
+    private void addEditButtonListeners() {
         Button cancelButton = findViewById(R.id.btn_cancel_edit);
         cancelButton.setOnClickListener(v -> {
             Intent intent;

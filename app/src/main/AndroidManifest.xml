@@ -41,7 +41,7 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".NewTaskActivity"
+            android:name=".TaskActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
@@ -61,7 +61,7 @@
             android:name=".OpenTasksActivity"
             android:exported="false" />
         <activity
-            android:name=".TasksActivity"
+            android:name=".YourTasksActivity"
             android:exported="false" />
     </application>
 

@@ -15,11 +15,11 @@ import com.apep.cleaningbuddy.models.Task;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
-    private final List<Task> data;
+    private final List<Task> tasks;
     private final OnTaskClickListener listener;
 
-    public TaskAdapter(List<Task> data, OnTaskClickListener listener) {
-        this.data = data;
+    public TaskAdapter(List<Task> tasks, OnTaskClickListener listener) {
+        this.tasks = tasks;
         this.listener = listener;
     }
 
@@ -35,13 +35,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Task room = data.get(position);
-        holder.bind(room, listener);
+        Task task = tasks.get(position);
+        holder.bind(task, listener);
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return tasks.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

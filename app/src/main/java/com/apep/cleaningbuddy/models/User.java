@@ -100,4 +100,9 @@ public class User {
     public static void logout() {
         loggedInUser = null;
     }
+
+    @Override
+    public String toString() {
+        return username;
+    }
 }

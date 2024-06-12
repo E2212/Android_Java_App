@@ -23,11 +23,27 @@
     <string name="room_add_title">New room</string>
 
     <!-- Tasks -->
+    <string name="task_edit_title">Edit task</string>
+    <string name="task_add_title">New task</string>
     <string name="task_list_header_assigned">Assigned</string>
+    <string name="task_btn_confirm_text">Confirm selection</string>
+    <string name="confirm_completed_task_text">You have completed %1$s tasks.</string>
+    <string name="confirm_completed_none_task_text">No task(s) selected to complete.</string>
 
     <!-- Lists -->
     <string name="list_header_id">ID</string>
     <string name="list_header_task">Task</string>
+    <string name="task_list_header_completed">Completed</string>
+
+    <!-- Interval -->
+    <string name="interval_daily_text">Daily</string>
+    <string name="interval_weekly_text">Weekly</string>
+    <string name="interval_custom_text">Custom</string>
+
+    <!-- Custom interval -->
+    <string name="custom_interval_days_text">Days</string>
+    <string name="custom_interval_weeks_text">Weeks</string>
+    <string name="custom_interval_months_text">Months</string>
 
     <!-- Dialogs -->
     <string name="dialog_room_delete_title">Delete room</string>
@@ -42,6 +58,8 @@
 
     <!-- Error fields -->
     <string name="error_room_name">Room name</string>
+    <string name="error_task_name">Task name</string>
+    <string name="error_custom_interval_name">Custom interval</string>
 
     <!-- Profile Screen -->
     <string name="profile_title_tv_text">Profile</string>
