@@ -18,19 +18,17 @@ import java.util.List;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private final List<Task> tasks;
     private final OnTaskClickListener listener;
-    private final boolean showCheckboxes;
 
-    public TaskAdapter(List<Task> tasks, OnTaskClickListener listener, boolean showCheckboxes) {
+    public TaskAdapter(List<Task> tasks, OnTaskClickListener listener) {
         this.tasks = tasks;
         this.listener = listener;
-        this.showCheckboxes = showCheckboxes;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_row, parent, false);
-        return new ViewHolder(view, showCheckboxes);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -48,22 +46,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         private final TextView taskIdTf;
         private final TextView taskNameTf;
         private final TextView taskAssignedTf;
-        private final CheckBox taskCompleteCb;
 
-        public ViewHolder(@NonNull View itemView, boolean showCheckboxes) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             taskIdTf = itemView.findViewById(R.id.task_id_tf);
             taskNameTf = itemView.findViewById(R.id.task_name_tf);
             taskAssignedTf = itemView.findViewById(R.id.task_assigned_tf);
-            taskCompleteCb = itemView.findViewById(R.id.task_complete_cb);
-
-            if (showCheckboxes) {
-                taskCompleteCb.setVisibility(View.VISIBLE);
-                taskAssignedTf.setVisibility(View.GONE);
-            } else {
-                taskCompleteCb.setVisibility(View.GONE);
-                taskAssignedTf.setVisibility(View.VISIBLE);
-            }
         }
 
         public void bind(Task task, OnTaskClickListener listener) {
@@ -71,14 +59,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             taskIdTf.setText(id);
             taskNameTf.setText(task.getName());
             taskAssignedTf.setText((task.getUser() == null ? "Unassigned" : task.getUser().getUsername()));
-            taskCompleteCb.setChecked(task.isCompleted());
 
             itemView.setOnClickListener(v -> listener.onTaskClick(task));
-
-            taskCompleteCb.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                task.setCompleted(isChecked);
-                Task.updateTask(itemView.getContext(), task);
-            });
         }
     }
 }

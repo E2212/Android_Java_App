@@ -4,76 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AllTasksActivity">
+    tools:context=".YourTasksActivity">
 
     <TextView
-        android:id="@+id/allTasks_task_tv_id"
+        android:id="@+id/activity_tasks_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
         android:layout_marginTop="16dp"
-        android:text="All tasks"
-        android:textColor="#000000"
+        android:text="Tasks"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/task_add_btn_id"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Tab Buttons -->
     <Button
-        android:id="@+id/allTasks_add_btn_id"
+        android:id="@+id/task_add_btn_id"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:foreground="@drawable/add_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintBottom_toBottomOf="@+id/activity_tasks_item_title"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintTop_toTopOf="@+id/activity_tasks_item_title" />
 
-    <!-- Tab Buttons -->
     <LinearLayout
-        android:id="@+id/allTasks_topLinearLayout_id"
+        android:id="@+id/activity_tasks_item_tabButtons"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/allTasks_task_tv_id"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_tasks_item_title">
 
         <Button
-            android:id="@+id/allTasks_yourTasks_btn_id"
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/task_your_task_tab_id"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="@string/tab_yourTasks_text"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:padding="8dp"/>
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="@string/tab_yourTasks_text" />
 
         <Button
-            android:id="@+id/allTasks_openTasks_btn_id"
+            android:id="@+id/tasks_open_task_tab_id"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="@string/tab_openTasks_text"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            android:padding="8dp"/>
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="@string/tab_openTasks_text" />
 
         <Button
-            android:id="@+id/allTasks_allTasks_btn_id"
+            android:id="@+id/tasks_all_tasks_tab_id"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="@string/tab_allTasks_text"
-            android:background="@color/activeTabBackground"
-            android:padding="12dp"/>
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:foreground="@drawable/bottom_border"
+            android:text="@string/tab_allTasks_text"/>
     </LinearLayout>
 
     <LinearLayout
@@ -88,10 +82,10 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allTasks_topLinearLayout_id">
+        app:layout_constraintTop_toBottomOf="@+id/activity_tasks_item_tabButtons">
 
         <TextView
-            android:id="@+id/task_id_label"
+            android:id="@+id/header_task_id_tf"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -99,23 +93,22 @@
             android:textAlignment="textStart" />
 
         <TextView
-            android:id="@+id/task_name_label"
+            android:id="@+id/header_task_name_tf"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="Task"
+            android:layout_weight="4"
+            android:text="@string/list_header_task"
             android:textAlignment="textStart" />
 
         <TextView
-            android:id="@+id/task_assigned_label"
+            android:id="@+id/header_task_confirm_tf"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Assigned"
+            android:layout_weight="2"
+            android:text="@string/task_list_header_assigned"
             android:textAlignment="textStart" />
     </LinearLayout>
 
-    <!-- RecyclerView for All Tasks -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/all_tasks_list_rv"
         android:layout_width="0dp"
@@ -126,6 +119,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/task_list_headers" />
+
+    <!-- Guidelines-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
 
     <!-- Bottom [Tasks] nav bar -->
     <LinearLayout

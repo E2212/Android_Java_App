@@ -25,42 +25,51 @@ public class AllTasksActivity extends BaseActivity implements OnTaskClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_tasks);
         addNavbarListeners();
+        addNavbarListeners();
+        addTabListeners();
+        addNewTaskButton();
 
-        allTasks = Task.getAll(this); // Fetch all tasks from the database
+        allTasks = Task.getAll(AllTasksActivity.this);
         recyclerView = findViewById(R.id.all_tasks_list_rv);
-        TaskAdapter adapter = new TaskAdapter(allTasks, this, false);
+        TaskAdapter adapter = new TaskAdapter(allTasks, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
-
-        Button yourTasksButton = findViewById(R.id.allTasks_yourTasks_btn_id);
-        Button openTasksButton = findViewById(R.id.allTasks_openTasks_btn_id);
-        Button allTasksButton = findViewById(R.id.allTasks_allTasks_btn_id);
-        Button addButton = findViewById(R.id.allTasks_add_btn_id);
-
-        yourTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(AllTasksActivity.this, YourTasksActivity.class);
-            startActivity(intent);
-        });
-
-        openTasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(AllTasksActivity.this, OpenTasksActivity.class);
-            startActivity(intent);
-        });
-
-        allTasksButton.setOnClickListener(v -> {
-            Toast.makeText(AllTasksActivity.this, "You are already in All Tasks", Toast.LENGTH_SHORT).show();
-        });
-
-
+    private void addNewTaskButton() {
+        Button addButton = findViewById(R.id.task_add_btn_id);
         addButton.setOnClickListener(v -> {
-            Intent intent = new Intent(AllTasksActivity.this, TaskActivity.class);
+            Intent intent = new Intent(this, TaskActivity.class);
             startActivity(intent);
+        });
+    }
+
+    private void addTabListeners() {
+        Button yourTasksButton = findViewById(R.id.task_your_task_tab_id);
+        yourTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, YourTasksActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        Button openTasksButton = findViewById(R.id.tasks_open_task_tab_id);
+        openTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, OpenTasksActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        Button allTasksButton = findViewById(R.id.tasks_all_tasks_tab_id);
+        allTasksButton.setOnClickListener(v -> {
+            //
         });
     }
 
     @Override
     public void onTaskClick(Task task) {
-        // Handle task click
+        Intent intent = new Intent(this, TaskDetailsActivity.class);
+        intent.putExtra("TASK_ID", task.getId());
+        startActivity(intent);
+        finish();
     }
 }

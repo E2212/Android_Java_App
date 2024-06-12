@@ -1,6 +1,7 @@
 package com.apep.cleaningbuddy.models;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -38,37 +39,6 @@ public class Task {
     private List<CompletedTask> taskHistory = new ArrayList<>();
     @Ignore
     private Room room;
-
-    public static void completeTasks(Context context, List<Task> tasks) {
-        for (Task task : tasks) {
-            CompletedTask completedTask = new CompletedTask();
-            completedTask.setTaskId(task.getId());
-            completedTask.setUserId(User.getLoggedInUser().getId());
-            completedTask.setCompletionDate(new Date());
-            CompletedTask.addCompletedTask(context, completedTask);
-        }
-    }
-
-    public static List<Task> getOpenUserTasks(Context context) {
-        List<Task> tasks = Database.getDatabase(context).taskDao().getUserTasks(User.getLoggedInUser().getId());
-        for (Task task : tasks) {
-            CompletedTask completedTask = Database.getDatabase(context).completedTaskDao().getLatestCompletedTasks(task.getId());
-
-            if (completedTask != null) {
-                // Wanneer het verschil in dagen met het laatst voltooide moment groter
-                // of gelijk is aan de interval verwijderen we deze uit de lijst
-                Date now = new Date();
-                long millisDifference = now.getTime() - completedTask.getCompletionDate().getTime();
-                long dayDifference = millisDifference / (1000 * 60 * 60 * 24);
-
-                if (dayDifference >= task.interval) {
-                    tasks.remove(task);
-                }
-            }
-        }
-
-        return tasks;
-    }
 
     public static Task getTask(Context context, int taskId) {
         return Database.getDatabase(context).taskDao().getTask(taskId);
@@ -144,6 +114,7 @@ public class Task {
 
     public static void deleteTask(Context context, Task task) {
         if (task != null) {
+            Database.getDatabase(context).completedTaskDao().deleteTask(task.getId());
             Database.getDatabase(context).taskDao().delete(task);
         }
     }
@@ -208,13 +179,55 @@ public class Task {
     }
 
     public static List<Task> getOpenTasks(Context context) {
-        List<Task> tasks = Database.getDatabase(context).taskDao().getAll();
         List<Task> openTasks = new ArrayList<>();
-        for (Task task : tasks) {
-            if (task.getUserId() == null) { // Assuming a task is open if it has no assigned user
-                openTasks.add(task);
+        for (Task task : Database.getDatabase(context).taskDao().getAllOpenTasks()) {
+            CompletedTask completedTask = Database.getDatabase(context).completedTaskDao().getLatestCompletedTasks(task.getId());
+            if (completedTask != null) {
+                // Wanneer het verschil in dagen met het laatst voltooide moment groter
+                // of gelijk is aan de interval verwijderen we deze uit de lijst
+                Date now = new Date();
+                long millisDifference = now.getTime() - completedTask.getCompletionDate().getTime();
+                long dayDifference = millisDifference / (1000 * 60 * 60 * 24);
+
+                if (dayDifference >= task.interval) {
+                    continue;
+                }
             }
+
+            openTasks.add(task);
         }
+        return openTasks;
+    }
+
+    public static void completeTasks(Context context, List<Task> tasks) {
+        for (Task task : tasks) {
+            CompletedTask completedTask = new CompletedTask();
+            completedTask.setTaskId(task.getId());
+            completedTask.setUserId(User.getLoggedInUser().getId());
+            completedTask.setCompletionDate(new Date());
+            CompletedTask.addCompletedTask(context, completedTask);
+        }
+    }
+
+    public static List<Task> getOpenUserTasks(Context context) {
+        List<Task> openTasks = new ArrayList<>();
+        for (Task task : Database.getDatabase(context).taskDao().getUserTasks(User.getLoggedInUser().getId())) {
+            CompletedTask completedTask = Database.getDatabase(context).completedTaskDao().getLatestCompletedTasks(task.getId());
+            if (completedTask != null) {
+                // Wanneer het verschil in dagen met het laatst voltooide moment groter
+                // of gelijk is aan de interval verwijderen we deze uit de lijst
+                Date now = new Date();
+                long millisDifference = now.getTime() - completedTask.getCompletionDate().getTime();
+                long dayDifference = millisDifference / (1000 * 60 * 60 * 24);
+
+                if (dayDifference >= task.interval) {
+                    continue;
+                }
+            }
+
+            openTasks.add(task);
+        }
+
         return openTasks;
     }
 
