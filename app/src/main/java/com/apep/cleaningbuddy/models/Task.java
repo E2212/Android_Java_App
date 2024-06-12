@@ -10,6 +10,7 @@ import androidx.room.PrimaryKey;
 
 import com.apep.cleaningbuddy.database.Database;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(
@@ -23,6 +24,7 @@ public class Task {
     @PrimaryKey(autoGenerate = true)
     private Integer id;
     private String name;
+    private boolean completed;
     private Integer interval;
     private String description;
     private Integer userId;
@@ -30,6 +32,13 @@ public class Task {
     @Ignore
     private User user;
 
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
     public Integer getId() {
         return id;
     }
@@ -107,4 +116,16 @@ public class Task {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public static List<Task> getOpenTasks(Context context) {
+        List<Task> tasks = Database.getDatabase(context).taskDao().getAll();
+        List<Task> openTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getUserId() == null) { // Assuming a task is open if it has no assigned user
+                openTasks.add(task);
+            }
+        }
+        return openTasks;
+    }
+
 }

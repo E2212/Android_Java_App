@@ -21,12 +21,8 @@ import com.apep.cleaningbuddy.models.Task;
 
 import java.util.List;
 
-public class TasksActivity extends BaseActivity implements OnOpenTaskClickListener {
+public class TasksActivity extends BaseActivity implements OnTaskClickListener {
 
-    private Button yourTasksButton;
-    private Button openTasksButton;
-    private Button allTasksButton;
-    private Button addButton;
     private RecyclerView recyclerView;
     private List<Task> tasks;
 
@@ -36,55 +32,41 @@ public class TasksActivity extends BaseActivity implements OnOpenTaskClickListen
         setContentView(R.layout.activity_tasks);
         addNavbarListeners();
 
-        tasks = Task.getAll(this);
+        tasks = Task.getAll(this); // Fetch all tasks from the database
+        tasks.removeIf(task -> task.getUserId() == null); // Filter out unassigned tasks
+
         recyclerView = findViewById(R.id.open_tasks_list_rv);
-        OpenTaskAdapter adapter = new OpenTaskAdapter(tasks,this);
+        TaskAdapter adapter = new TaskAdapter(tasks, this, true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        yourTasksButton = findViewById(R.id.Tasks_yourTasks_btn_id);
-        openTasksButton = findViewById(R.id.Tasks_openTasks_btn_id);
-        allTasksButton = findViewById(R.id.Tasks_allTasks_btn_id);
-        addButton = findViewById(R.id.Tasks_add_btn_id);
+        Button yourTasksButton = findViewById(R.id.Tasks_yourTasks_btn_id);
+        Button openTasksButton = findViewById(R.id.Tasks_openTasks_btn_id);
+        Button allTasksButton = findViewById(R.id.Tasks_allTasks_btn_id);
+        Button addButton = findViewById(R.id.Tasks_add_btn_id);
 
-        yourTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle "Your tasks" button click
-                Toast.makeText(TasksActivity.this, "You are already in Your Tasks", Toast.LENGTH_SHORT).show();
-            }
+        yourTasksButton.setOnClickListener(v -> {
+            Toast.makeText(TasksActivity.this, "You are already in Your Tasks", Toast.LENGTH_SHORT).show();
         });
 
-        openTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to OpenTasksActivity
-                Intent intent = new Intent(TasksActivity.this, OpenTasksActivity.class);
-                startActivity(intent);
-            }
+        openTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(TasksActivity.this, OpenTasksActivity.class);
+            startActivity(intent);
         });
 
-        allTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to AllTasksActivity
-                Intent intent = new Intent(TasksActivity.this, AllTasksActivity.class);
-                startActivity(intent);
-            }
+        allTasksButton.setOnClickListener(v -> {
+            Intent intent = new Intent(TasksActivity.this, AllTasksActivity.class);
+            startActivity(intent);
         });
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to NewTaskActivity
-                Intent intent = new Intent(TasksActivity.this, NewTaskActivity.class);
-                startActivity(intent);
-            }
+        addButton.setOnClickListener(v -> {
+            Intent intent = new Intent(TasksActivity.this, NewTaskActivity.class);
+            startActivity(intent);
         });
     }
 
     @Override
     public void onTaskClick(Task task) {
-        // TODO: afvinken
+        // Handle task click
     }
 }

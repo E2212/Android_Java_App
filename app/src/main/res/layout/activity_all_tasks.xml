@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".AllTasksActivity">
 
-
     <TextView
         android:id="@+id/allTasks_task_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="172dp"
         android:layout_marginTop="16dp"
-        android:text="Tasks"
+        android:text="All tasks"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -61,7 +60,7 @@
             android:layout_weight="1"
             android:layout_margin="4dp"
             android:layout_height="wrap_content"
-            android:text="@string/tab_allTasks_text"
+            android:text="@string/tab_openTasks_text"
             android:background="@android:color/black"
             android:textColor="@android:color/white"
             android:padding="8dp"/>
@@ -75,10 +74,58 @@
             android:text="@string/tab_allTasks_text"
             android:background="@color/activeTabBackground"
             android:padding="12dp"/>
-
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/task_list_headers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allTasks_topLinearLayout_id">
 
+        <TextView
+            android:id="@+id/task_id_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ID"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:id="@+id/task_name_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Task"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:id="@+id/task_assigned_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Assigned"
+            android:textAlignment="textStart" />
+    </LinearLayout>
+
+    <!-- RecyclerView for All Tasks -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/all_tasks_list_rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_list_headers" />
 
     <!-- Bottom [Tasks] nav bar -->
     <LinearLayout
@@ -118,6 +165,5 @@
             android:text="@string/tab_profile_text"
             style="@style/Widget.Cleaner.Button" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
