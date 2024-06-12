@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AllTasksActivity extends AppCompatActivity {
+public class AllTasksActivity extends BaseActivity {
 
     private Button yourTasksButton;
     private Button openTasksButton;
@@ -20,6 +20,7 @@ public class AllTasksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_tasks);
+        addNavbarListeners();
 
         yourTasksButton = findViewById(R.id.allTasks_yourTasks_btn_id);
         openTasksButton = findViewById(R.id.allTasks_openTasks_btn_id);
@@ -57,48 +58,6 @@ public class AllTasksActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Navigate to NewTaskActivity
                 Intent intent = new Intent(AllTasksActivity.this, NewTaskActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button roomsButton = findViewById(R.id.btn_rooms);
-        roomsButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, RoomsActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        Button tasksButton = findViewById(R.id.btn_tasks);
-        tasksButton.setOnClickListener(v -> {
-            // Current Activity, no action needed
-        });
-
-        Button profileButton = findViewById(R.id.btn_profile);
-        profileButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        // Setup click listeners for table rows
-        setupTaskRowClickListener(R.id.allTasks_task1_tr_id, "Curtain cleaning", "Weekly", "Room 6", "You", "Curtains must be washed at 60°C");
-        setupTaskRowClickListener(R.id.allTasks_task2_tr_id, "Toilet cleaning", "Daily", "Room 5", "Ensar", "Clean the toilets daily");
-        setupTaskRowClickListener(R.id.allTasks_task3_tr_id, "Carpet cleaning", "Monthly", "Room 4", "Paco", "Vacuum and clean carpets monthly");
-        setupTaskRowClickListener(R.id.allTasks_task4_tr_id, "Bedding", "Weekly", "Room 3", "You", "Change bedding weekly");
-        setupTaskRowClickListener(R.id.allTasks_task5_tr_id, "Electronics", "Weekly", "Room 2", "Khalid", "Dust and clean electronics weekly");
-    }
-
-    private void setupTaskRowClickListener(int rowId, final String taskName, final String interval, final String room, final String assignedUser, final String description) {
-        TableRow taskRow = findViewById(rowId);
-        taskRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AllTasksActivity.this, TaskDetailsActivity.class);
-                intent.putExtra("TASK_NAME", taskName);
-                intent.putExtra("INTERVAL", interval);
-                intent.putExtra("ROOM", room);
-                intent.putExtra("ASSIGNED_USER", assignedUser);
-                intent.putExtra("DESCRIPTION", description);
                 startActivity(intent);
             }
         });

@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/profile_username_tv_id"
+        android:id="@+id/profile_username_label_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -29,7 +29,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/signup_tv_tekst_id" />
+        app:layout_constraintTop_toBottomOf="@id/profile_tv_text_id" />
 
     <TextView
         android:id="@+id/profile_username_tv_id"
@@ -37,8 +37,9 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="@id/profile_username_tv_id" />
+        app:layout_constraintStart_toStartOf="@id/guideline_middle"
+        app:layout_constraintBottom_toBottomOf="@id/profile_username_label_tv_id"
+        app:layout_constraintTop_toTopOf="@id/profile_username_label_tv_id" />
 
     <TextView
         android:id="@+id/profile_language_tv_id"
@@ -49,13 +50,14 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/profile_username_tv_id" />
+        app:layout_constraintTop_toBottomOf="@id/profile_username_label_tv_id" />
 
     <Spinner
         android:id="@+id/signup_language_spnr_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintBottom_toBottomOf="@id/profile_language_tv_id"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
         app:layout_constraintTop_toTopOf="@id/profile_language_tv_id" />
 
     <TextView
@@ -73,7 +75,8 @@
         android:id="@+id/profile_theme_spnr_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintBottom_toBottomOf="@id/profile_theme_tv_id"
+        app:layout_constraintStart_toStartOf="@id/guideline_middle"
         app:layout_constraintTop_toTopOf="@id/profile_theme_tv_id" />
 
     <Button
@@ -82,13 +85,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/logout_btn_text"
-        app:layout_constraintBottom_toTopOf="@+id/profile_linearLayout_id"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_theme_spnr_id" />
 
+    <!-- Bottom [Profile] nav bar -->
     <LinearLayout
-        android:id="@+id/profile_linearLayout_id"
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -99,34 +103,34 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/profile_rooms_btn_id"
-            style="@style/Widget.Cleaner.Button"
+            android:id="@+id/btn_rooms"
             android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_rooms_text" />
+            android:text="@string/tab_rooms_text"
+            style="@style/Widget.Cleaner.Button" />
 
         <Button
-            android:id="@+id/profile_tasks_btn_id"
-            style="@style/Widget.Cleaner.Button"
+            android:id="@+id/btn_tasks"
             android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_tasks_text" />
+            android:text="@string/tab_tasks_text"
+            style="@style/Widget.Cleaner.Button" />
 
         <Button
-            android:id="@+id/profile_profile_btn_id"
-            style="@style/Widget.Cleaner.Button"
+            android:id="@+id/btn_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_profile_text" />
+            android:text="@string/tab_profile_text"
+            style="@style/Widget.Cleaner.Button" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/guideline_middle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"

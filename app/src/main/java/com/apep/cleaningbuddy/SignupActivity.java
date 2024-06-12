@@ -15,7 +15,7 @@ import com.apep.cleaningbuddy.models.Theme;
 import com.apep.cleaningbuddy.models.User;
 import com.apep.cleaningbuddy.utils.InputValidations;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends BaseActivity {
     private InputValidations validator;
 
     @Override
@@ -42,19 +42,15 @@ public class SignupActivity extends AppCompatActivity {
 
             if (!validator.validateLength(username, "Username", 4)) {
                 showError(validator.getErrors());
-                return;
             }
             if (!validator.validateNotEmpty(username, "Username")) {
                 showError(validator.getErrors());
-                return;
             }
             if (!validator.validatePasswordStrength(password, "Password")) {
                 showError(validator.getErrors());
-                return;
             }
             if (!password.equals(repeatPassword)) {
                 showError(getString(R.string.error_password_mismatch_text));
-                return;
             }
 
             User newUser = new User();

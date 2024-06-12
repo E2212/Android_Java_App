@@ -17,7 +17,7 @@ public class InputValidations {
 
     public boolean validateLength(String data, String fieldName, int minLength) {
         if (data == null || data.length() < minLength) {
-            errors.add(String.format(context.getString(R.string.error_length), fieldName, minLength));
+            errors.add(String.format(context.getString(R.string.error_length_text), fieldName, minLength));
             return false;
         }
         return true;
@@ -25,7 +25,7 @@ public class InputValidations {
 
     public boolean validateNumeric(String data, String fieldName) {
         if (data == null || !data.matches("\\d+")) {
-            errors.add(String.format(context.getString(R.string.error_numeric), fieldName));
+            errors.add(String.format(context.getString(R.string.error_numeric_text), fieldName));
             return false;
         }
         return true;
@@ -33,7 +33,7 @@ public class InputValidations {
 
     public boolean validateNotEmpty(String data, String fieldName) {
         if (data == null || data.trim().isEmpty()) {
-            errors.add(String.format(context.getString(R.string.error_required), fieldName));
+            errors.add(String.format(context.getString(R.string.error_required_text), fieldName));
             return false;
         }
         return true;
@@ -42,13 +42,13 @@ public class InputValidations {
     public boolean validatePasswordStrength(String data, String fieldName) {
         boolean isValid = true;
         if (data == null || data.trim().isEmpty() || data.length() < 6 || data.length() > 16 || data.contains(" ")) {
-            errors.add(String.format(context.getString(R.string.error_password_min_length), fieldName, 6));
-            errors.add(String.format(context.getString(R.string.error_password_max_length), fieldName, 16));
-            errors.add(String.format(context.getString(R.string.error_password_no_spaces), fieldName));
+            errors.add(String.format(context.getString(R.string.error_password_min_length_text), fieldName, 6));
+            errors.add(String.format(context.getString(R.string.error_password_max_length_text), fieldName, 16));
+            errors.add(String.format(context.getString(R.string.error_password_no_spaces_text), fieldName));
             isValid = false;
         }
         if (!data.matches(".*[A-Z].*") || !data.matches(".*[a-z].*") || !data.matches(".*\\d.*") || !data.matches(".*[!@#$%^&*()].*")) {
-            errors.add(String.format(context.getString(R.string.error_password_strength), fieldName));
+            errors.add(String.format(context.getString(R.string.error_password_strength_text), fieldName));
             isValid = false;
         }
         return isValid;

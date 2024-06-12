@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class NewTaskActivity extends AppCompatActivity {
+public class NewTaskActivity extends BaseActivity {
 
     private EditText taskNameEditText;
     private Spinner intervalSpinner;
@@ -32,6 +32,8 @@ public class NewTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
+        addNavbarListeners();
+
         taskNameEditText = findViewById(R.id.activity_new_task_item_taskName);
         intervalSpinner = findViewById(R.id.activity_new_task_item_interval);
         customIntervalLabel = findViewById(R.id.activity_new_task_item_customIntervalLabel);
@@ -44,11 +46,13 @@ public class NewTaskActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.activity_new_task_item_cancelButton);
         saveButton = findViewById(R.id.activity_new_task_item_saveButton);
 
+        /*
         // Populate spinners with data
         populateIntervalSpinner();
         populateCustomIntervalTypeSpinner();
         populateRoomSpinner();
         populateAssignedUserSpinner();
+        */
 
         // Handle interval spinner selection
         intervalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -82,13 +86,13 @@ public class NewTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle save task logic
-                if (validateInputs()) {
-                    saveTask();
-                }
             }
         });
     }
 
+
+
+    /*
     private void populateIntervalSpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.interval_options, android.R.layout.simple_spinner_item);
@@ -116,60 +120,5 @@ public class NewTaskActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         assignedUserSpinner.setAdapter(adapter);
     }
-
-    private boolean validateInputs() {
-        boolean isValid = true;
-
-        if (taskNameEditText.getText().toString().trim().isEmpty()) {
-            taskNameEditText.setError("Field is required");
-            isValid = false;
-        }
-
-        if (intervalSpinner.getSelectedItem() == null) {
-            TextView errorText = (TextView) intervalSpinner.getSelectedView();
-            if (errorText != null) {
-                errorText.setError("Field is required");
-            }
-            isValid = false;
-        }
-
-        if ("Custom".equals(intervalSpinner.getSelectedItem())) {
-            if (customIntervalTypeSpinner.getSelectedItem() == null) {
-                TextView errorText = (TextView) customIntervalTypeSpinner.getSelectedView();
-                if (errorText != null) {
-                    errorText.setError("Field is required");
-                }
-                isValid = false;
-            }
-
-            if (customIntervalValueEditText.getText().toString().trim().isEmpty()) {
-                customIntervalValueEditText.setError("Field is required");
-                isValid = false;
-            }
-        }
-
-        if (roomSpinner.getSelectedItem() == null) {
-            TextView errorText = (TextView) roomSpinner.getSelectedView();
-            if (errorText != null) {
-                errorText.setError("Field is required");
-            }
-            isValid = false;
-        }
-
-        if (assignedUserSpinner.getSelectedItem() == null) {
-            TextView errorText = (TextView) assignedUserSpinner.getSelectedView();
-            if (errorText != null) {
-                errorText.setError("Field is required");
-            }
-            isValid = false;
-        }
-
-        return isValid;
-    }
-
-    private void saveTask() {
-        // Implement task saving logic here
-        Toast.makeText(this, "Task saved", Toast.LENGTH_SHORT).show();
-        finish();
-    }
+    */
 }

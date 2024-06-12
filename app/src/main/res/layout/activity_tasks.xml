@@ -77,127 +77,10 @@
             android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <!-- Scrollable Table Layout -->
-    <ScrollView
-        android:id="@+id/Tasks_sv_id"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/activity_tasks_item_tabButtons"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="1">
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/Tasks_sv_ID_tv_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/tab_ID_text"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/Tasks_sv_task_tv_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/tab_tasks_text"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/Tasks_sv_completeTask_tv_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/tab_completeTask_text"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/activity_tasks_item_task1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="T-121"
-                    android:padding="8dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Curtain cleaning"
-                    android:padding="8dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"/>
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/activity_tasks_item_task2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="T-124"
-                    android:padding="8dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bedding"
-                    android:padding="8dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"/>
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/activity_tasks_item_task3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="T-127"
-                    android:padding="8dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Task 7"
-                    android:padding="8dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"/>
-            </TableRow>
-        </TableLayout>
-    </ScrollView>
-
-    <!-- Bottom Navigation Buttons -->
+    <!-- Bottom [Tasks] nav bar -->
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -209,29 +92,29 @@
 
         <Button
             android:id="@+id/btn_rooms"
-            style="@style/Widget.Cleaner.Button"
             android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_rooms" />
+            android:text="@string/tab_rooms_text"
+            style="@style/Widget.Cleaner.Button" />
 
         <Button
             android:id="@+id/btn_tasks"
-            style="@style/Widget.Cleaner.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_tasks" />
+            android:text="@string/tab_tasks_text"
+            style="@style/Widget.Cleaner.Button" />
 
         <Button
             android:id="@+id/btn_profile"
-            style="@style/Widget.Cleaner.Button"
             android:textColor="@color/dark_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/tab_profile" />
+            android:text="@string/tab_profile_text"
+            style="@style/Widget.Cleaner.Button" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

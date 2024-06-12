@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TaskHistoryActivity extends AppCompatActivity {
+public class TaskHistoryActivity extends BaseActivity {
 
     private Button backButton;
 
@@ -14,6 +14,7 @@ public class TaskHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_history);
+        addNavbarListeners();
 
         backButton = findViewById(R.id.activity_task_history_item_backButton);
 

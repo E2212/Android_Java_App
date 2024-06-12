@@ -77,4 +77,5 @@
     <string name="error_password_no_spaces_text">%1$s must not contain spaces.</string>
     <string name="error_password_strength_text">%1$s must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</string>
     <string name="error_password_mismatch_text">Passwords do not match.</string>
+    <string name="error_invalid_username_password_text">Invalid username and password combination.</string>
 </resources>

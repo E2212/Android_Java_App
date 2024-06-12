@@ -15,11 +15,12 @@ import com.apep.cleaningbuddy.models.Language;
 import com.apep.cleaningbuddy.models.Theme;
 import com.apep.cleaningbuddy.models.User;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        addNavbarListeners();
 
         User loggedInUser = User.getLoggedInUser();
         TextView tvUsername = findViewById(R.id.profile_username_tv_id);
@@ -64,25 +65,6 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent);
             User.logout();
             finish();
-        });
-
-        Button roomsButton = findViewById(R.id.profile_rooms_btn_id);
-        roomsButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, RoomsActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        Button tasksButton = findViewById(R.id.profile_tasks_btn_id);
-        tasksButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, TasksActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        Button profileButton = findViewById(R.id.profile_profile_btn_id);
-        profileButton.setOnClickListener(v -> {
-            // Current Activity, no action needed
         });
     }
 }
