@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="@string/username_et_hint"
+        android:text="@string/username_label_text"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
@@ -41,46 +41,11 @@
         app:layout_constraintBottom_toBottomOf="@id/profile_username_label_tv_id"
         app:layout_constraintTop_toTopOf="@id/profile_username_label_tv_id" />
 
-    <TextView
-        android:id="@+id/profile_language_tv_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/language_label_text"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/profile_username_label_tv_id" />
-
-    <Spinner
-        android:id="@+id/signup_language_spnr_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/profile_language_tv_id"
-        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
-        app:layout_constraintTop_toTopOf="@id/profile_language_tv_id" />
-
-    <TextView
-        android:id="@+id/profile_theme_tv_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/theme_label_text"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/signup_language_spnr_id" />
-
-    <Spinner
-        android:id="@+id/profile_theme_spnr_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/profile_theme_tv_id"
-        app:layout_constraintStart_toStartOf="@id/guideline_middle"
-        app:layout_constraintTop_toTopOf="@id/profile_theme_tv_id" />
 
     <Button
         android:id="@+id/profile_logout_btn_id"
+        style="@style/Widget.Cleaner.Button"
+        android:padding="0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -88,7 +53,21 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_theme_spnr_id" />
+        app:layout_constraintTop_toBottomOf="@id/profile_username_label_tv_id" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
     <!-- Bottom [Profile] nav bar -->
     <LinearLayout
@@ -128,20 +107,4 @@
             android:text="@string/tab_profile_text"
             style="@style/Widget.Cleaner.Button" />
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_middle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

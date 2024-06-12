@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".TaskDetailsActivity">
 
-    <!-- Task Name -->
-
-    <!-- Edit Button -->
-
-    <!-- Delete Button -->
     <TextView
         android:id="@+id/activity_task_details_item_taskName"
         android:layout_width="wrap_content"

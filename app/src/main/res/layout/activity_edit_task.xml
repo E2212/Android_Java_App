@@ -247,6 +247,4 @@
             android:text="@string/tab_profile_text"
             style="@style/Widget.Cleaner.Button" />
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

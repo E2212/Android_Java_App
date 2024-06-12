@@ -41,13 +41,13 @@ public class InputValidations {
 
     public boolean validatePasswordStrength(String data, String fieldName) {
         boolean isValid = true;
-        if (data == null || data.trim().isEmpty() || data.length() < 6 || data.length() > 16 || data.contains(" ")) {
+        if (data == null || data.trim().isEmpty() || (data.length() < 6 || data.length() > 16 || data.contains(" "))) {
             errors.add(String.format(context.getString(R.string.error_password_min_length_text), fieldName, 6));
             errors.add(String.format(context.getString(R.string.error_password_max_length_text), fieldName, 16));
             errors.add(String.format(context.getString(R.string.error_password_no_spaces_text), fieldName));
             isValid = false;
         }
-        if (!data.matches(".*[A-Z].*") || !data.matches(".*[a-z].*") || !data.matches(".*\\d.*") || !data.matches(".*[!@#$%^&*()].*")) {
+        if (data == null || data.trim().isEmpty() || (!data.matches(".*[A-Z].*") || !data.matches(".*[a-z].*") || !data.matches(".*\\d.*") || !data.matches(".*[!@#$%^&*()].*"))) {
             errors.add(String.format(context.getString(R.string.error_password_strength_text), fieldName));
             isValid = false;
         }
@@ -59,8 +59,14 @@ public class InputValidations {
         if (errors.size() == 1) {
             errorMessage.append(errors.get(0));
         } else {
+            boolean isFirstLine = true;
             for (String error : errors) {
-                errorMessage.append("\n- ").append(error);
+                if (isFirstLine) {
+                    errorMessage.append("- ").append(error);
+                    isFirstLine = false;
+                } else {
+                    errorMessage.append("\n- ").append(error);
+                }
             }
         }
         errors.clear();

@@ -28,8 +28,6 @@ public class User {
 
     private String username;
     private byte[] password;
-    private Language language;
-    private Theme theme;
 
     public Integer getId() {
         return id;
@@ -55,22 +53,6 @@ public class User {
         this.password = password;
     }
 
-    public Language getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
-
-    public Theme getTheme() {
-        return theme;
-    }
-
-    public void setTheme(Theme theme) {
-        this.theme = theme;
-    }
-
     public User() {}
 
     public boolean checkUserPassword(byte[] password) {
@@ -83,6 +65,7 @@ public class User {
     }
 
     public void setHashedPassword(byte[] password) {
+        // Dit kan niet in setPassword() omdat de Room library die methode ook aanroept.
         this.password = Cryptor.hashPassword(ArrayUtils.combine(password, PASSWORD_SALT.getBytes()));
     }
 
