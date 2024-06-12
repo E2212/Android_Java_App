@@ -2,11 +2,13 @@ package com.apep.cleaningbuddy.database;
 
 import android.content.Context;
 
+import com.apep.cleaningbuddy.models.CompletedTask;
 import com.apep.cleaningbuddy.models.Room;
 import com.apep.cleaningbuddy.models.Task;
 import com.apep.cleaningbuddy.models.User;
 
 import java.security.SecureRandom;
+import java.util.Date;
 import java.util.Random;
 
 public class DatabaseSeeder {
@@ -31,6 +33,10 @@ public class DatabaseSeeder {
         if (User.getAll(this.context).isEmpty()) {
             seedUsers();
         }
+
+        if (CompletedTask.getAll(this.context).isEmpty()) {
+            seedCompletedTasks();
+        }
     }
 
     private void seedRooms() {
@@ -38,7 +44,11 @@ public class DatabaseSeeder {
                 "Krusty Krab", "Chum Bucket", "SpongeBob's Pineapple",
                 "Patrick's Rock", "Squidward's House", "Goo Lagoon",
                 "Mrs. Puff's Boating School", "Shady Shoals Rest Home",
-                "Jellyfish Fields", "Sandy's Treedome"
+                "Jellyfish Fields", "Sandy's Treedome",
+                "Krusty Krab Office", "Chum Bucket Lab", "SpongeBob's Bedroom",
+                "Patrick's Kitchen", "Squidward's Gallery", "Goo Lagoon Shore",
+                "Boating School Classroom", "Shady Shoals Pool",
+                "Jellyfish Fields Cave", "Sandy's Exercise Room"
         };
 
         for (String roomName : roomNames) {
@@ -55,7 +65,10 @@ public class DatabaseSeeder {
                 "Feed Gary", "Water Plants", "Polish Trophies", "Clean Windows",
                 "Wash Dishes", "Take Out Trash", "Repair Boatmobile",
                 "Dust Furniture", "Organize Supplies", "Rake Leaves",
-                "Paint Fence", "Vacuum Floors", "Wash Clothes", "Clean Bathroom"
+                "Paint Fence", "Vacuum Floors", "Wash Clothes", "Clean Bathroom",
+                "Clean Office", "Sanitize Lab", "Make Bed", "Cook Breakfast",
+                "Dust Art", "Clean Shore", "Organize Classroom", "Clean Pool",
+                "Explore Cave", "Workout Routine"
         };
 
         String[] taskDescriptions = {
@@ -78,7 +91,17 @@ public class DatabaseSeeder {
                 "Paint the fence to keep it looking new.",
                 "Vacuum the floors in the living room.",
                 "Wash and dry all the clothes.",
-                "Clean the bathroom thoroughly."
+                "Clean the bathroom thoroughly.",
+                "Clean the office thoroughly.",
+                "Sanitize the lab equipment.",
+                "Make the bed and organize the room.",
+                "Cook breakfast for everyone.",
+                "Dust and clean the art pieces.",
+                "Clean the shore of all debris.",
+                "Organize the classroom materials.",
+                "Clean and sanitize the pool area.",
+                "Explore the cave and collect samples.",
+                "Complete the workout routine for the day."
         };
 
         for (int i = 0; i < taskNames.length; i++) {
@@ -86,16 +109,21 @@ public class DatabaseSeeder {
             task.setName(taskNames[i]);
             task.setInterval(random.nextInt(7) + 1);
             task.setDescription(taskDescriptions[i]);
-            task.setRoomId(random.nextInt(10) + 1);
+            task.setRoomId(random.nextInt(20) + 1); // Adjusted for 20 rooms
             Task.addTask(this.context, task);
         }
     }
 
     private void seedUsers() {
-        createUser("Spongebob");
-        createUser("Patrick");
-        createUser("Squidward");
-        createUser("Mr. Krabs");
+        String[] userNames = {
+                "Spongebob", "Patrick", "Squidward", "Mr. Krabs",
+                "Sandy", "Plankton", "Gary", "Mrs. Puff",
+                "Larry", "Pearl"
+        };
+
+        for (String username : userNames) {
+            createUser(username);
+        }
     }
 
     private void createUser(String username) {
@@ -109,5 +137,19 @@ public class DatabaseSeeder {
         byte[] password = new byte[16];
         random.nextBytes(password);
         return password;
+    }
+
+    private void seedCompletedTasks() {
+        int numUsers = User.getAll(this.context).size();
+        int numTasks = Task.getAll(this.context).size();
+        int numCompletedTasks = 100; // Example: creating 100 completed tasks
+
+        for (int i = 0; i < numCompletedTasks; i++) {
+            CompletedTask completedTask = new CompletedTask();
+            completedTask.setCompletionDate(new Date(System.currentTimeMillis() - random.nextInt(1000000000)));
+            completedTask.setTaskId(random.nextInt(numTasks) + 1); // Random taskId within range
+            completedTask.setUserId(random.nextInt(numUsers) + 1); // Random userId within range
+            CompletedTask.addCompletedTask(this.context, completedTask);
+        }
     }
 }
