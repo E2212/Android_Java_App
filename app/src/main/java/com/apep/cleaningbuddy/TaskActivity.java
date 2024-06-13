@@ -36,8 +36,8 @@ public class TaskActivity extends BaseActivity {
     private Spinner spAssignedUser;
     private Task task;
     private EditText etName;
-    private List<User> users = new ArrayList<>();
-    private List<Room> rooms = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
+    private final List<Room> rooms = new ArrayList<>();
     private boolean edit = false;
 
     @Override

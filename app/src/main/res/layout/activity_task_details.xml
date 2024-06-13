@@ -13,7 +13,7 @@
         android:layout_marginTop="32dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btn_edit_task"
@@ -163,7 +163,7 @@
 
         <Button
             android:id="@+id/btn_rooms"
-            android:textColor="@color/dark_grey"
+            android:textColor="?attr/colorSecondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -180,7 +180,7 @@
 
         <Button
             android:id="@+id/btn_profile"
-            android:textColor="@color/dark_grey"
+            android:textColor="?attr/colorSecondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

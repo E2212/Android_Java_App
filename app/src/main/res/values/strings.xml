@@ -25,6 +25,7 @@
     <!-- Tasks -->
     <string name="task">Task</string>
     <string name="tasks">Tasks</string>
+    <string name="task_history">Task history</string>
     <string name="task_edit_title">Edit task</string>
     <string name="task_add_title">New task</string>
     <string name="task_list_header_assigned">Assigned</string>

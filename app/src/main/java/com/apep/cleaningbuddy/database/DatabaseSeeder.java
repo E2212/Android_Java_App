@@ -13,8 +13,8 @@ import java.util.Random;
 
 public class DatabaseSeeder {
 
-    private Context context;
-    private Random random;
+    private final Context context;
+    private final Random random;
 
     public DatabaseSeeder(Context context) {
         this.random = new SecureRandom();

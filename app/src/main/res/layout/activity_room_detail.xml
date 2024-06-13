@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="?attr/android:windowBackground">
 
     <TextView
         android:id="@+id/tv_title"
@@ -13,7 +13,7 @@
         android:layout_marginTop="32dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btn_edit_room"
@@ -131,7 +131,7 @@
 
         <Button
             android:id="@+id/btn_tasks"
-            android:textColor="@color/dark_grey"
+            android:textColor="?attr/colorSecondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -140,7 +140,7 @@
 
         <Button
             android:id="@+id/btn_profile"
-            android:textColor="@color/dark_grey"
+            android:textColor="?attr/colorSecondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
