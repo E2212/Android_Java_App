@@ -23,12 +23,12 @@ public interface TaskDao {
     @Query("SELECT * FROM task WHERE roomId = :roomId ")
     List<Task> getRoomTasks(int roomId);
 
-    @Query("SELECT * FROM task WHERE userId = :userId ")
+    @Query("SELECT * FROM task WHERE userId = :userId AND roomId IS NOT NULL")
     List<Task> getUserTasks(int userId);
 
     @Query("SELECT * FROM task WHERE id = :taskId ")
     Task getTask(int taskId);
 
-    @Query("SELECT * FROM task WHERE userId IS NULL ")
+    @Query("SELECT * FROM task WHERE userId IS NULL AND roomId IS NOT NULL")
     List<Task> getAllOpenTasks();
 }
