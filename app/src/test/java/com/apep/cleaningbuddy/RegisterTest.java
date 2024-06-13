@@ -2,12 +2,9 @@ package com.apep.cleaningbuddy;
 
 import android.content.Context;
 
-import androidx.test.core.app.ApplicationProvider;
-
 import com.apep.cleaningbuddy.database.Database;
 import com.apep.cleaningbuddy.models.User;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,11 +16,6 @@ public class RegisterTest {
     private Context context;
     private Database testDatabase;
 
-    @Before
-    public void setUp() {
-        context = ApplicationProvider.getApplicationContext();
-        testDatabase = Database.getTestDatabase(context);
-    }
 
     @Test
     public void register_ShouldAddUser_WhenDataIsValid() {

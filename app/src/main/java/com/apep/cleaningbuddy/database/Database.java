@@ -1,11 +1,10 @@
 package com.apep.cleaningbuddy.database;
 
 import android.content.Context;
-
-import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.apep.cleaningbuddy.models.CompletedTask;
+import com.apep.cleaningbuddy.models.Room;
 import com.apep.cleaningbuddy.models.Task;
 import com.apep.cleaningbuddy.models.User;
 
@@ -16,25 +15,11 @@ public abstract class Database extends RoomDatabase {
     public abstract TaskDao taskDao();
     public abstract CompletedTaskDao completedTaskDao();
 
-    private static volatile Database INSTANCE;
-
-    public static Database getDatabase(final Context context) {
-        if (INSTANCE == null) {
-            synchronized (Database.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    Database.class, "CleaningBuddyDB")
-                            .allowMainThreadQueries()
-                            .build();
-                }
-            }
+    public static Database getDatabase(Context context) {
+        Database database;
+        synchronized (Database.class) {
+            database = androidx.room.Room.databaseBuilder(context, Database.class, "CleaningBuddyDB").allowMainThreadQueries().build();
         }
-        return INSTANCE;
-    }
-
-    public static Database getTestDatabase(final Context context) {
-        return Room.inMemoryDatabaseBuilder(context.getApplicationContext(), Database.class)
-                .allowMainThreadQueries()
-                .build();
+        return database;
     }
 }
