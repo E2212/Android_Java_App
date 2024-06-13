@@ -30,8 +30,8 @@ android {
 
 dependencies {
     val room_version = "2.6.1"
-    implementation ("androidx.room:room-runtime:$room_version")
-    annotationProcessor ("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -40,4 +40,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    testImplementation("androidx.test:core:1.4.0")
+    testImplementation("androidx.test.ext:junit:1.1.3")
+    testImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation("androidx.test:core-ktx:1.4.0")
 }

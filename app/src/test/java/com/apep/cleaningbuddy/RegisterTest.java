@@ -14,7 +14,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
-
 public class RegisterTest {
 
     private Context context;
@@ -22,9 +21,10 @@ public class RegisterTest {
 
     @Before
     public void setUp() {
-        context = getApplicationContext();
+        context = ApplicationProvider.getApplicationContext();
         testDatabase = Database.getTestDatabase(context);
     }
+
     @Test
     public void register_ShouldAddUser_WhenDataIsValid() {
         // Arrange
@@ -35,7 +35,7 @@ public class RegisterTest {
         user.setHashedPassword(password.getBytes());
 
         // Act
-        User.addUser(null, user);
+        User.addUser(context, user);
 
         // Assert
         assertNotNull(User.getLoggedInUser());
@@ -56,11 +56,10 @@ public class RegisterTest {
         user2.setHashedPassword(password.getBytes());
 
         // Act
-        User.addUser(null, user1);
-        User.addUser(null, user2);
+        User.addUser(context, user1);
+        User.addUser(context, user2);
 
         // Assert
         assertNotEquals(User.getLoggedInUser().getUsername(), user2.getUsername());
     }
 }
-
