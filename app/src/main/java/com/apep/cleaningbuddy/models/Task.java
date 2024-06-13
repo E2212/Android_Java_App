@@ -242,10 +242,22 @@ public class Task {
     }
 
     public static List<CompletedTask> getDescTaskHistory(Context context, int taskId) {
-        return Database.getDatabase(context).completedTaskDao().getCompletedTasks(taskId);
+        List<CompletedTask> completedTasks = Database.getDatabase(context).completedTaskDao().getCompletedTasks(taskId);
+        for (CompletedTask completedTask : completedTasks) {
+            if (completedTask.getUserId() != null) {
+                completedTask.setUser(Database.getDatabase(context).userDao().getUser(completedTask.getUserId()));
+            }
+        }
+        return completedTasks;
     }
 
     public static List<CompletedTask> getAscTaskHistory(Context context, int taskId) {
-        return Database.getDatabase(context).completedTaskDao().getCompletedTasksAsc(taskId);
+        List<CompletedTask> completedTasks = Database.getDatabase(context).completedTaskDao().getCompletedTasksAsc(taskId);
+        for (CompletedTask completedTask : completedTasks) {
+            if (completedTask.getUserId() != null) {
+                completedTask.setUser(Database.getDatabase(context).userDao().getUser(completedTask.getUserId()));
+            }
+        }
+        return completedTasks;
     }
 }
