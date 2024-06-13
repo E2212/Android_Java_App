@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 public class TaskActivity extends BaseActivity {
 
     private EditText taskNameEditText;
@@ -126,11 +125,8 @@ public class TaskActivity extends BaseActivity {
             finish();
         });
 
-
         Button saveButton = findViewById(R.id.btn_save_edit);
-        saveButton.setOnClickListener(v -> {
-            save();
-        });
+        saveButton.setOnClickListener(v -> save());
     }
 
     private void save() {
@@ -140,13 +136,14 @@ public class TaskActivity extends BaseActivity {
 
         boolean errors = false;
         InputValidations validator = new InputValidations(this);
-        if (!validator.validateNotEmpty(etName.getText().toString(), getString(R.string.error_task_name))) {
+        String taskName = etName.getText().toString().trim();
+        if (!validator.validateLength(taskName, getString(R.string.error_task_name), 2)) {
             etName.setError(validator.getErrors());
             errors = true;
         }
 
-        task.setName(etName.getText().toString());
-        task.setDescription(etDescription.getText().toString());
+        task.setName(taskName);
+        task.setDescription(etDescription.getText().toString().trim());
 
         int resourceId = Interval.getResourceIds()[spInterval.getSelectedItemPosition()];
         Interval interval = Interval.fromResourceId(resourceId);
@@ -160,18 +157,17 @@ public class TaskActivity extends BaseActivity {
             int customIntervalResourceId = CustomInterval.getResourceIds()[spCustomIntervalType.getSelectedItemPosition()];
             CustomInterval customInterval = CustomInterval.fromResourceId(customIntervalResourceId);
 
-
-            if (!validator.validateNotEmpty(etCustomInterval.getText().toString(), getString(R.string.error_custom_interval_name))) {
-                etName.setError(validator.getErrors());
+            String customIntervalInput = etCustomInterval.getText().toString().trim();
+            if (!validator.validateNotEmpty(customIntervalInput, getString(R.string.error_custom_interval_name))) {
+                etCustomInterval.setError(validator.getErrors());
                 errors = true;
                 intervalAmount = 0;
-            } else if (!validator.validateNumeric(etCustomInterval.getText().toString(), getString(R.string.error_custom_interval_name))) {
-                etName.setError(validator.getErrors());
+            } else if (!validator.validateNumeric(customIntervalInput, getString(R.string.error_custom_interval_name))) {
+                etCustomInterval.setError(validator.getErrors());
                 errors = true;
                 intervalAmount = 0;
             } else {
-                String inputCustomInterval = etCustomInterval.getText().toString();
-                int customIntervalAmount = Integer.parseInt(inputCustomInterval);
+                int customIntervalAmount = Integer.parseInt(customIntervalInput);
                 if (customInterval == CustomInterval.MONTHS) {
                     intervalAmount = customIntervalAmount * 30;
                 } else if (customInterval == CustomInterval.WEEKS) {
@@ -195,21 +191,20 @@ public class TaskActivity extends BaseActivity {
         }
 
         Intent intent;
-        if (edit & !errors) {
+        if (edit && !errors) {
             Task.updateTask(this, task);
             intent = new Intent(this, TaskDetailsActivity.class);
             intent.putExtra("TASK_ID", task.getId());
-        } else {
+        } else if (!errors) {
             Task.addTask(this, task);
             intent = new Intent(this, YourTasksActivity.class);
+        } else {
+            return;
         }
 
-        if (!errors) {
-            startActivity(intent);
-            finish();
-        }
+        startActivity(intent);
+        finish();
     }
-
 
     private void populateIntervalSpinner() {
         spInterval = findViewById(R.id.sp_task_interval);
@@ -245,7 +240,6 @@ public class TaskActivity extends BaseActivity {
         spCustomIntervalType.setAdapter(customIntervalAdapter);
     }
 
-
     private void populateRoomSpinner() {
         spRoom = findViewById(R.id.sp_task_room);
         ArrayAdapter<Room> roomAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, rooms);
@@ -259,5 +253,4 @@ public class TaskActivity extends BaseActivity {
         userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spAssignedUser.setAdapter(userAdapter);
     }
-
 }
