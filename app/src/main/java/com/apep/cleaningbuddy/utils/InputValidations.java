@@ -16,7 +16,7 @@ public class InputValidations {
     }
 
     public boolean validateLength(String data, String fieldName, int minLength) {
-        if (data == null || data.length() < minLength) {
+        if (data == null || data.trim().length() < minLength) {
             errors.add(String.format(context.getString(R.string.error_length_text), fieldName, minLength));
             return false;
         }
