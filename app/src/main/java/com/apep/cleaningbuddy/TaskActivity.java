@@ -161,7 +161,11 @@ public class TaskActivity extends BaseActivity {
             CustomInterval customInterval = CustomInterval.fromResourceId(customIntervalResourceId);
 
 
-            if (!validator.validateNumeric(etCustomInterval.getText().toString(), getString(R.string.error_custom_interval_name))) {
+            if (!validator.validateNotEmpty(etCustomInterval.getText().toString(), getString(R.string.error_custom_interval_name))) {
+                etName.setError(validator.getErrors());
+                errors = true;
+                intervalAmount = 0;
+            } else if (!validator.validateNumeric(etCustomInterval.getText().toString(), getString(R.string.error_custom_interval_name))) {
                 etName.setError(validator.getErrors());
                 errors = true;
                 intervalAmount = 0;

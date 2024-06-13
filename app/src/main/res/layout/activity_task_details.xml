@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Interval"
+        android:text="@string/task_interval"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -69,7 +69,6 @@
         android:id="@+id/activity_task_details_item_interval"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Weekly"
         app:layout_constraintBottom_toBottomOf="@+id/activity_task_details_item_intervalLabel"
         app:layout_constraintStart_toStartOf="@+id/guideline_middle"
         app:layout_constraintTop_toTopOf="@+id/activity_task_details_item_intervalLabel" />
@@ -79,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Room"
+        android:text="@string/room"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_interval" />
@@ -88,7 +87,6 @@
         android:id="@+id/activity_task_details_item_room"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Room 6"
         app:layout_constraintBottom_toBottomOf="@+id/activity_task_details_item_roomLabel"
         app:layout_constraintStart_toStartOf="@+id/guideline_middle"
         app:layout_constraintTop_toTopOf="@+id/activity_task_details_item_roomLabel" />
@@ -98,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Assigned user"
+        android:text="@string/task_assigned_user"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_room" />
@@ -107,7 +105,6 @@
         android:id="@+id/activity_task_details_item_assignedUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You"
         app:layout_constraintBottom_toBottomOf="@+id/activity_task_details_item_assignedUserLabel"
         app:layout_constraintStart_toStartOf="@+id/guideline_middle"
         app:layout_constraintTop_toTopOf="@+id/activity_task_details_item_assignedUserLabel" />
@@ -117,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Description"
+        android:text="@string/task_description"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_assignedUser" />
@@ -126,7 +123,6 @@
         android:id="@+id/activity_task_details_item_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Curtains must be washed at 60°C"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_middle"
         app:layout_constraintTop_toTopOf="@+id/activity_task_details_item_descriptionLabel" />

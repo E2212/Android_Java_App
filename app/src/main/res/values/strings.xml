@@ -16,23 +16,29 @@
     <string name="signup_cancel_btn_text">Cancel</string>
 
     <!-- Rooms -->
-    <string name="rooms_title_tv_text">Rooms</string>
-    <string name="rooms_list_header_name">Room</string>
+    <string name="room">Room</string>
+    <string name="rooms">Rooms</string>
     <string name="rooms_list_header_tasks">Tasks</string>
     <string name="room_edit_title">Edit room</string>
     <string name="room_add_title">New room</string>
 
     <!-- Tasks -->
+    <string name="task">Task</string>
+    <string name="tasks">Tasks</string>
     <string name="task_edit_title">Edit task</string>
     <string name="task_add_title">New task</string>
     <string name="task_list_header_assigned">Assigned</string>
     <string name="task_btn_confirm_text">Confirm selection</string>
     <string name="confirm_completed_task_text">You have completed %1$s tasks.</string>
     <string name="confirm_completed_none_task_text">No task(s) selected to complete.</string>
+    <string name="task_interval">Interval</string>
+    <string name="task_assigned_user">Assigned user</string>
+    <string name="task_description">Description</string>
+    <string name="task_name_req">Task name *</string>
+    <string name="task_custom_interval">Custom interval *</string>
 
     <!-- Lists -->
     <string name="list_header_id">ID</string>
-    <string name="list_header_task">Task</string>
     <string name="task_history_list_header_date">Date</string>
     <string name="task_history_list_header_user">Completed by</string>
     <string name="task_list_header_completed">Completed</string>

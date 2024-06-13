@@ -72,7 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="@string/list_header_task"
+            android:text="@string/task"
             android:textAlignment="textStart" />
 
         <TextView

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Tasks"
+        android:text="@string/tasks"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -89,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ID"
+            android:text="@string/list_header_id"
             android:textAlignment="textStart" />
 
         <TextView
@@ -97,7 +97,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="@string/list_header_task"
+            android:text="@string/task"
             android:textAlignment="textStart" />
 
         <TextView
