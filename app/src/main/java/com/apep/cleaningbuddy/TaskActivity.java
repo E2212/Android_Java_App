@@ -2,7 +2,6 @@ package com.apep.cleaningbuddy;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,6 +38,7 @@ public class TaskActivity extends BaseActivity {
     private EditText etName;
     private List<User> users = new ArrayList<>();
     private List<Room> rooms = new ArrayList<>();
+    private boolean edit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class TaskActivity extends BaseActivity {
 
         int taskId = getIntent().getIntExtra("TASK_ID", 0);
         if (taskId != 0) {
+            edit = true;
             this.task = Task.getTask(this, taskId);
         }
 
@@ -90,7 +91,7 @@ public class TaskActivity extends BaseActivity {
             if (interval == Interval.CUSTOM) {
                 CustomInterval customInterval = CustomInterval.getType(task.getInterval());
                 spCustomIntervalType.setSelection(CustomInterval.getPosition(this, customInterval));
-                etCustomInterval.setText(CustomInterval.getCustomerIntervalAmount(task.getInterval()));
+                etCustomInterval.setText(String.valueOf(CustomInterval.getCustomIntervalAmount(task.getInterval())));
             }
 
             if (task.getUser() != null) {
@@ -98,12 +99,12 @@ public class TaskActivity extends BaseActivity {
             }
 
             if (task.getRoom() != null) {
-                spRoom.setSelection(rooms.indexOf(task.getRoom()));
+                int index = Room.getListIndex(rooms, task.getRoom());
+                spRoom.setSelection(index);
             }
         } else {
             title.setText(getString(R.string.task_add_title));
         }
-
     }
 
     private void addEditButtonListeners() {
@@ -111,10 +112,14 @@ public class TaskActivity extends BaseActivity {
         cancelButton.setOnClickListener(v -> {
             Intent intent;
             if (task != null) {
-                intent = new Intent(this, RoomDetailActivity.class);
+                intent = new Intent(this, TaskDetailsActivity.class);
                 intent.putExtra("TASK_ID", task.getId());
             } else {
-                intent = new Intent(this, RoomsActivity.class);
+                if (edit) {
+                    intent = new Intent(this, AllTasksActivity.class);
+                } else {
+                    intent = new Intent(this, YourTasksActivity.class);
+                }
             }
 
             startActivity(intent);
@@ -129,10 +134,7 @@ public class TaskActivity extends BaseActivity {
     }
 
     private void save() {
-        boolean edit = false;
-        if (task != null) {
-            edit = true;
-        } else {
+        if (!edit) {
             task = new Task();
         }
 
@@ -155,7 +157,7 @@ public class TaskActivity extends BaseActivity {
         } else if (interval == Interval.WEEKLY) {
             intervalAmount = 7;
         } else {
-            int customIntervalResourceId = Interval.getResourceIds()[spCustomIntervalType.getSelectedItemPosition()];
+            int customIntervalResourceId = CustomInterval.getResourceIds()[spCustomIntervalType.getSelectedItemPosition()];
             CustomInterval customInterval = CustomInterval.fromResourceId(customIntervalResourceId);
 
 

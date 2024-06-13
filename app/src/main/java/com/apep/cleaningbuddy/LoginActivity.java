@@ -46,7 +46,7 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
-        DatabaseSeeder databaseSeeder = new DatabaseSeeder();
-        databaseSeeder.seedDatabase(this);
+        DatabaseSeeder databaseSeeder = new DatabaseSeeder(this);
+        databaseSeeder.seedDatabase();
     }
 }

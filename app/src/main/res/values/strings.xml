@@ -33,7 +33,11 @@
     <!-- Lists -->
     <string name="list_header_id">ID</string>
     <string name="list_header_task">Task</string>
+    <string name="task_history_list_header_date">Date</string>
+    <string name="task_history_list_header_user">Completed by</string>
     <string name="task_list_header_completed">Completed</string>
+    <string name="unassigned">"Unassigned"</string>
+    <string name="unknown">"Unknown"</string>
 
     <!-- Interval -->
     <string name="interval_daily_text">Daily</string>
@@ -46,10 +50,11 @@
     <string name="custom_interval_months_text">Months</string>
 
     <!-- Dialogs -->
-    <string name="dialog_room_delete_title">Delete room</string>
-    <string name="dialog_room_delete_message">Are you sure you want to delete \'%1$s\'?</string>
+    <string name="dialog_delete_message">Are you sure you want to delete \'%1$s\'?</string>
     <string name="dialog_btn_cancel">Cancel</string>
     <string name="dialog_btn_delete">Delete</string>
+    <string name="dialog_room_delete_title">Delete room</string>
+    <string name="dialog_task_delete_title">Delete task</string>
 
     <!-- Edit text -->
     <string name="et_room_name_req">Room name *</string>

@@ -1,6 +1,5 @@
 package com.apep.cleaningbuddy;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -31,7 +30,7 @@ public class RoomDetailActivity extends BaseActivity implements OnTaskClickListe
         title.setText(room.getName());
 
         recyclerView = findViewById(R.id.tasks_list_rv);
-        TaskAdapter adapter = new TaskAdapter(room.getTasks(), this);
+        TaskAdapter adapter = new TaskAdapter(room.getTasks(), this, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -47,7 +46,7 @@ public class RoomDetailActivity extends BaseActivity implements OnTaskClickListe
         removeRoomButton.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.dialog_room_delete_title))
-                    .setMessage(getString(R.string.dialog_room_delete_message, room.getName()))
+                    .setMessage(getString(R.string.dialog_delete_message, room.getName()))
                     .setPositiveButton(getString(R.string.dialog_btn_delete), (dialog, i) -> {
                         Room.deleteRoom(this, room);
                         Intent intent = new Intent(this, RoomsActivity.class);

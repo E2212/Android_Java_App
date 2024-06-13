@@ -2,6 +2,7 @@ package com.apep.cleaningbuddy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class OpenTasksActivity extends BaseActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         Button confirmBtn = findViewById(R.id.btn_completed_confirm);
         confirmBtn.setOnClickListener(v -> {
             List<Task> confirmedTasks = adapter.getCheckedTasks();
@@ -43,7 +45,7 @@ public class OpenTasksActivity extends BaseActivity {
 
             tasks.clear();
             tasks.addAll(Task.getOpenTasks(this));
-            recyclerView.getAdapter().notifyDataSetChanged();
+            adapter.updateTasks(tasks);
         });
     }
 

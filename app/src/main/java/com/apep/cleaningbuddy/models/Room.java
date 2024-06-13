@@ -20,6 +20,17 @@ public class Room {
     @Ignore
     private List<Task> tasks = new ArrayList<>();
 
+    public static int getListIndex(List<Room> rooms, Room room) {
+        int index = -1;
+        for (Room listRoom : rooms) {
+            if (listRoom.getId() == room.getId()) {
+                index = rooms.indexOf(listRoom);
+                break;
+            }
+        }
+        return index;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -72,8 +72,8 @@ public class User {
     public static void addUser(Context context, User user) {
         if (user != null) {
             // We gaan er van uit dat een nieuwe User alleen wordt aangemaakt tijdens registratie
-            loggedInUser = user;
-            Database.getDatabase(context).userDao().insert(user);
+            long newUserId = Database.getDatabase(context).userDao().insert(user);
+            loggedInUser = Database.getDatabase(context).userDao().getUser((int) newUserId);
         }
     }
 

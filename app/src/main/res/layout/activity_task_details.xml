@@ -7,91 +7,81 @@
     tools:context=".TaskDetailsActivity">
 
     <TextView
-        android:id="@+id/activity_task_details_item_taskName"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="16dp"
-        android:text="Curtain cleaning"
-        android:textColor="#000000"
+        android:layout_marginTop="32dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_edit_task"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Archive Button -->
     <Button
-        android:id="@+id/activity_task_details_item_editButton"
+        android:id="@+id/btn_edit_task"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="20dp"
         android:foreground="@drawable/edit_button"
-        app:layout_constraintEnd_toStartOf="@id/activity_task_details_item_deleteButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintEnd_toStartOf="@+id/btn_remove_task"
+        app:layout_constraintStart_toEndOf="@+id/tv_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_title" />
 
     <Button
-        android:id="@+id/activity_task_details_item_deleteButton"
+        android:id="@+id/btn_remove_task"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="10dp"
         android:foreground="@drawable/remove_button"
-        app:layout_constraintEnd_toStartOf="@id/activity_task_details_item_archiveButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintStart_toEndOf="@+id/btn_edit_task"
+        app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
+    <Button
+        android:id="@+id/btn_history_task"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:foreground="@drawable/history_button"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toEndOf="@id/btn_remove_task"
+        app:layout_constraintTop_toTopOf="@+id/tv_title" />
 
     <!-- Task Details -->
-
-    <Button
-        android:id="@+id/activity_task_details_item_backButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:foreground="@drawable/back_button"
-        app:layout_constraintEnd_toStartOf="@+id/activity_task_details_item_taskName"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/activity_task_details_item_archiveButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="8dp"
-        android:foreground="@drawable/history_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/activity_task_details_item_intervalLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:text="Interval"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_taskName" />
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <TextView
         android:id="@+id/activity_task_details_item_interval"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Weekly"
-        app:layout_constraintStart_toEndOf="@id/activity_task_details_item_intervalLabel"
-        app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_intervalLabel"
-        android:layout_marginStart="124dp"/>
+        app:layout_constraintBottom_toBottomOf="@+id/activity_task_details_item_intervalLabel"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toTopOf="@+id/activity_task_details_item_intervalLabel" />
 
     <TextView
         android:id="@+id/activity_task_details_item_roomLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:text="Room"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_interval" />
 
     <TextView
@@ -99,19 +89,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Room 6"
-        app:layout_constraintStart_toEndOf="@id/activity_task_details_item_roomLabel"
-        app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_roomLabel"
-        android:layout_marginStart="135dp"/>
+        app:layout_constraintBottom_toBottomOf="@+id/activity_task_details_item_roomLabel"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toTopOf="@+id/activity_task_details_item_roomLabel" />
 
     <TextView
         android:id="@+id/activity_task_details_item_assignedUserLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:text="Assigned user"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_room" />
 
     <TextView
@@ -119,29 +108,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You"
-        app:layout_constraintStart_toEndOf="@id/activity_task_details_item_assignedUserLabel"
-        app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_assignedUserLabel"
-        android:layout_marginStart="82dp"/>
+        app:layout_constraintBottom_toBottomOf="@+id/activity_task_details_item_assignedUserLabel"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toTopOf="@+id/activity_task_details_item_assignedUserLabel" />
 
     <TextView
         android:id="@+id/activity_task_details_item_descriptionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:text="Description"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/activity_task_details_item_assignedUser" />
 
     <TextView
         android:id="@+id/activity_task_details_item_description"
-        android:layout_width="214dp"
-        android:layout_height="124dp"
-        android:layout_marginStart="100dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Curtains must be washed at 60°C"
-        app:layout_constraintBaseline_toBaselineOf="@id/activity_task_details_item_descriptionLabel"
-        app:layout_constraintStart_toEndOf="@id/activity_task_details_item_descriptionLabel" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toTopOf="@+id/activity_task_details_item_descriptionLabel" />
+
+    <!-- Guidelines-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
     <!-- Bottom [Tasks] nav bar -->
     <LinearLayout

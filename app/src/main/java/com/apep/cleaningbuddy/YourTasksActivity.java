@@ -44,7 +44,7 @@ public class YourTasksActivity extends BaseActivity {
 
             tasks.clear();
             tasks.addAll(Task.getOpenUserTasks(this));
-            recyclerView.getAdapter().notifyDataSetChanged();
+            adapter.updateTasks(tasks);
         });
     }
 

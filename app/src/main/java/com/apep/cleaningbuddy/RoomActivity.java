@@ -22,6 +22,7 @@ public class RoomActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room);
         addNavbarListeners();
+        addEditButtonListeners();
 
         int roomId = getIntent().getIntExtra("ROOM_ID", 0);
         if (roomId != 0) {
