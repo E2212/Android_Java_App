@@ -17,7 +17,7 @@ public interface CompletedTaskDao {
     @Insert
     void insert(CompletedTask completedTask);
 
-    @Query("SELECT * FROM CompletedTask WHERE taskId = :taskId")
+    @Query("SELECT * FROM CompletedTask WHERE taskId = :taskId ORDER BY completionDate DESC ")
     List<CompletedTask> getCompletedTasks(int taskId);
 
     @Query("SELECT * FROM CompletedTask WHERE taskId = :taskId ORDER BY completionDate DESC LIMIT 1")
@@ -26,4 +26,7 @@ public interface CompletedTaskDao {
     @Query("DELETE FROM CompletedTask WHERE taskId = :taskId")
 
     void deleteTask(int taskId);
+
+    @Query("SELECT * FROM CompletedTask WHERE taskId = :taskId ORDER BY completionDate ASC ")
+    List<CompletedTask> getCompletedTasksAsc(int taskId);
 }

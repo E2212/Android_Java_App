@@ -31,7 +31,7 @@ public class AllTasksActivity extends BaseActivity implements OnTaskClickListene
 
         allTasks = Task.getAll(AllTasksActivity.this);
         recyclerView = findViewById(R.id.all_tasks_list_rv);
-        TaskAdapter adapter = new TaskAdapter(allTasks, this);
+        TaskAdapter adapter = new TaskAdapter(allTasks, this, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

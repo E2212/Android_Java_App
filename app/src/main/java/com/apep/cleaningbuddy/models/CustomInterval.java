@@ -30,12 +30,12 @@ public enum CustomInterval {
         return customInterval;
     }
 
-    public static int getCustomerIntervalAmount(Integer intervalAmount) {
+    public static int getCustomIntervalAmount(Integer intervalAmount) {
         int amount;
         if (intervalAmount % 30 == 0) {
-            amount = intervalAmount;
+            amount = intervalAmount / 30;
         } else if (intervalAmount % 7 == 0) {
-            amount = intervalAmount;
+            amount = intervalAmount / 7;
         } else {
             amount = intervalAmount;
         }

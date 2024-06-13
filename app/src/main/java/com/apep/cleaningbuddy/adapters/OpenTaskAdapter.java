@@ -17,8 +17,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class OpenTaskAdapter extends RecyclerView.Adapter<OpenTaskAdapter.ViewHolder> {
-    private final List<Task> tasks;
-    private final List<Boolean> checkedStates;
+    private List<Task> tasks;
+    private List<Boolean> checkedStates;
 
     public OpenTaskAdapter(List<Task> tasks) {
         this.tasks = tasks;
@@ -32,13 +32,13 @@ public class OpenTaskAdapter extends RecyclerView.Adapter<OpenTaskAdapter.ViewHo
                 .from(parent.getContext())
                 .inflate(R.layout.open_task_row, parent, false);
 
-        return new ViewHolder(view, checkedStates);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Task task = tasks.get(position);
-        holder.bind(task, position);
+        holder.bind(task, position, checkedStates);
     }
 
     @Override
@@ -56,24 +56,30 @@ public class OpenTaskAdapter extends RecyclerView.Adapter<OpenTaskAdapter.ViewHo
         return checkedTasks;
     }
 
+    public void updateTasks(List<Task> newTasks) {
+        this.tasks = newTasks;
+        this.checkedStates = new ArrayList<>(Collections.nCopies(newTasks.size(), false));
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final List<Boolean> checkedStates;
         private final CheckBox taskCompletedTf;
         private final TextView taskIdTf;
         private final TextView taskNameTf;
-        public ViewHolder(@NonNull View itemView, List<Boolean> checkedStates) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.checkedStates = checkedStates;
             taskIdTf = itemView.findViewById(R.id.task_id_tf);
             taskNameTf = itemView.findViewById(R.id.task_name_tf);
             taskCompletedTf = itemView.findViewById(R.id.task_confirm_tf);
         }
 
-        public void bind(Task task, int position) {
+        public void bind(Task task, int position, List<Boolean> checkedStates) {
             String id = "T-" + task.getId().toString();
             taskIdTf.setText(id);
             taskNameTf.setText(task.getName());
 
+            taskCompletedTf.setOnCheckedChangeListener(null);
+            taskCompletedTf.setChecked(checkedStates.get(position));
             taskCompletedTf.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 checkedStates.set(position, isChecked);
             });

@@ -16,22 +16,23 @@ public class DatabaseSeeder {
     private Context context;
     private Random random;
 
-    public DatabaseSeeder() {
+    public DatabaseSeeder(Context context) {
         this.random = new SecureRandom();
+        this.context = context;
     }
 
-    public void seedDatabase(Context context) {
+    public void seedDatabase() {
         Database.getDatabase(context);
+        if (User.getAll(context).isEmpty()) {
+            seedUsers();
+        }
+
         if (Room.getAll(context).isEmpty()) {
             seedRooms();
         }
 
         if (Task.getAll(context).isEmpty()) {
             seedTasks();
-        }
-
-        if (User.getAll(context).isEmpty()) {
-            seedUsers();
         }
 
         if (CompletedTask.getAll(context).isEmpty()) {
@@ -109,7 +110,10 @@ public class DatabaseSeeder {
             task.setName(taskNames[i]);
             task.setInterval(random.nextInt(7) + 1);
             task.setDescription(taskDescriptions[i]);
-            task.setRoomId(random.nextInt(20) + 1); // Adjusted for 20 rooms
+            task.setRoomId(random.nextInt(20) + 1);
+            if (random.nextInt(20) < 15) {
+                task.setUserId(random.nextInt(10) + 1);
+            }
             Task.addTask(this.context, task);
         }
     }

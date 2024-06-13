@@ -10,9 +10,11 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import com.apep.cleaningbuddy.TaskActivity;
+import com.apep.cleaningbuddy.TaskHistoryActivity;
 import com.apep.cleaningbuddy.database.Database;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +43,25 @@ public class Task {
     private Room room;
 
     public static Task getTask(Context context, int taskId) {
-        return Database.getDatabase(context).taskDao().getTask(taskId);
+        Task task = Database.getDatabase(context).taskDao().getTask(taskId);
+        if (task.getRoomId() != null) {
+            task.setRoom(Database.getDatabase(context).roomDao().getRoom(task.getRoomId()));
+        }
+
+        if (task.getUserId() != null) {
+            task.setUser(Database.getDatabase(context).userDao().getUser(task.getUserId()));
+        }
+
+        List<CompletedTask> completedTasks = Database.getDatabase(context).completedTaskDao().getCompletedTasks(taskId);
+        for (CompletedTask completedTask : completedTasks) {
+            User user = Database.getDatabase(context).userDao().getUser(completedTask.getUserId());
+            if (user != null) {
+                completedTask.setUser(user);
+            }
+        }
+        task.setTaskHistory(completedTasks);
+
+        return task;
     }
 
     public boolean isCompleted() {
@@ -148,16 +168,6 @@ public class Task {
     }
 
     public List<CompletedTask> getTaskHistory(Context context) {
-        if (taskHistory.isEmpty()) {
-            Database.getDatabase(context).completedTaskDao().getCompletedTasks(id);
-            for (CompletedTask completedTask : taskHistory) {
-                User user = Database.getDatabase(context).userDao().getUser(completedTask.getUserId());
-                if (user != null) {
-                    completedTask.setUser(user);
-                }
-            }
-        }
-
         return taskHistory;
     }
 
@@ -170,7 +180,7 @@ public class Task {
     }
 
     private void setRoom(Room room) {
-
+        this.room = room;
     }
 
     @Override
@@ -183,13 +193,13 @@ public class Task {
         for (Task task : Database.getDatabase(context).taskDao().getAllOpenTasks()) {
             CompletedTask completedTask = Database.getDatabase(context).completedTaskDao().getLatestCompletedTasks(task.getId());
             if (completedTask != null) {
-                // Wanneer het verschil in dagen met het laatst voltooide moment groter
+                // Wanneer het verschil in dagen met het laatst voltooide moment lager
                 // of gelijk is aan de interval verwijderen we deze uit de lijst
                 Date now = new Date();
                 long millisDifference = now.getTime() - completedTask.getCompletionDate().getTime();
                 long dayDifference = millisDifference / (1000 * 60 * 60 * 24);
 
-                if (dayDifference >= task.interval) {
+                if (dayDifference <= task.interval) {
                     continue;
                 }
             }
@@ -214,13 +224,13 @@ public class Task {
         for (Task task : Database.getDatabase(context).taskDao().getUserTasks(User.getLoggedInUser().getId())) {
             CompletedTask completedTask = Database.getDatabase(context).completedTaskDao().getLatestCompletedTasks(task.getId());
             if (completedTask != null) {
-                // Wanneer het verschil in dagen met het laatst voltooide moment groter
+                // Wanneer het verschil in dagen met het laatst voltooide moment lager
                 // of gelijk is aan de interval verwijderen we deze uit de lijst
                 Date now = new Date();
                 long millisDifference = now.getTime() - completedTask.getCompletionDate().getTime();
                 long dayDifference = millisDifference / (1000 * 60 * 60 * 24);
 
-                if (dayDifference >= task.interval) {
+                if (dayDifference <= task.interval) {
                     continue;
                 }
             }
@@ -231,4 +241,11 @@ public class Task {
         return openTasks;
     }
 
+    public static List<CompletedTask> getDescTaskHistory(Context context, int taskId) {
+        return Database.getDatabase(context).completedTaskDao().getCompletedTasks(taskId);
+    }
+
+    public static List<CompletedTask> getAscTaskHistory(Context context, int taskId) {
+        return Database.getDatabase(context).completedTaskDao().getCompletedTasksAsc(taskId);
+    }
 }
