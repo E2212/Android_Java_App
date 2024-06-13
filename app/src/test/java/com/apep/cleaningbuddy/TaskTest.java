@@ -1,9 +1,11 @@
 package com.apep.cleaningbuddy;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.Assert.assertEquals;
 
 import com.apep.cleaningbuddy.models.Task;
+
+import org.junit.Test;
 
 public class TaskTest {
 
