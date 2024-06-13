@@ -24,7 +24,6 @@ import java.util.Objects;
 
 public class TaskActivity extends BaseActivity {
 
-    private EditText taskNameEditText;
     private Spinner spInterval;
     private TextView tvCustomIntervalLabel;
     private LinearLayout containerCustomInterval;
@@ -46,7 +45,16 @@ public class TaskActivity extends BaseActivity {
         addNavbarListeners();
         addEditButtonListeners();
 
+        // Voeg lege opties toe aan de list, deze hebben ook een Integer id van NULL
+        // door het task.userId/roomId op NULL te zetten zijn deze dus ook ontkoppeld
+        User emptyUserOption = new User();
+        emptyUserOption.setUsername(getString(R.string.sp_option_none));
+        users.add(emptyUserOption);
         users.addAll(User.getAll(this));
+
+        Room emptyRoomOption = new Room();
+        emptyRoomOption.setName(getString(R.string.sp_option_none));
+        rooms.add(emptyRoomOption);
         rooms.addAll(Room.getAll(this));
 
         int taskId = getIntent().getIntExtra("TASK_ID", 0);
@@ -94,11 +102,12 @@ public class TaskActivity extends BaseActivity {
             }
 
             if (task.getUser() != null) {
-                spAssignedUser.setSelection(users.indexOf(task.getUser()));
+                Integer index = User.getListIndex(users, task.getUser());
+                spAssignedUser.setSelection(index);
             }
 
             if (task.getRoom() != null) {
-                int index = Room.getListIndex(rooms, task.getRoom());
+                Integer index = Room.getListIndex(rooms, task.getRoom());
                 spRoom.setSelection(index);
             }
         } else {

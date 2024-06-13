@@ -20,10 +20,10 @@ public class Room {
     @Ignore
     private List<Task> tasks = new ArrayList<>();
 
-    public static int getListIndex(List<Room> rooms, Room room) {
-        int index = -1;
+    public static Integer getListIndex(List<Room> rooms, Room room) {
+        Integer index = null;
         for (Room listRoom : rooms) {
-            if (listRoom.getId() == room.getId()) {
+            if (listRoom.getId() != null && listRoom.getId().equals(room.getId())) {
                 index = rooms.indexOf(listRoom);
                 break;
             }

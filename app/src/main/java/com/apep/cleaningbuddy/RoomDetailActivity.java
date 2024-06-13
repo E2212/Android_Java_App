@@ -17,7 +17,6 @@ import com.apep.cleaningbuddy.models.Task;
 public class RoomDetailActivity extends BaseActivity implements OnTaskClickListener {
 
     private Room room;
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,7 @@ public class RoomDetailActivity extends BaseActivity implements OnTaskClickListe
         TextView title = findViewById(R.id.tv_title);
         title.setText(room.getName());
 
-        recyclerView = findViewById(R.id.tasks_list_rv);
+        RecyclerView recyclerView = findViewById(R.id.tasks_list_rv);
         TaskAdapter adapter = new TaskAdapter(room.getTasks(), this, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

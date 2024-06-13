@@ -4,11 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,8 +14,6 @@ import com.apep.cleaningbuddy.models.Room;
 import java.util.List;
 
 public class RoomsActivity extends BaseActivity implements OnRoomClickListener {
-    private RecyclerView recyclerView;
-    private List<Room> rooms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +21,8 @@ public class RoomsActivity extends BaseActivity implements OnRoomClickListener {
         setContentView(R.layout.activity_rooms);
         addNavbarListeners();
 
-        rooms = Room.getAll(this);
-        recyclerView = findViewById(R.id.rooms_list_rv);
+        List<Room> rooms = Room.getAll(this);
+        RecyclerView recyclerView = findViewById(R.id.rooms_list_rv);
         RoomAdapter adapter = new RoomAdapter(rooms, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

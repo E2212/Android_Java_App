@@ -2,7 +2,6 @@ package com.apep.cleaningbuddy;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -15,7 +14,6 @@ import com.apep.cleaningbuddy.models.Task;
 import java.util.List;
 
 public class OpenTasksActivity extends BaseActivity {
-    private RecyclerView recyclerView;
     private List<Task> tasks;
 
     @Override
@@ -27,7 +25,7 @@ public class OpenTasksActivity extends BaseActivity {
         addNewTaskButton();
 
         tasks = Task.getOpenTasks(OpenTasksActivity.this);
-        recyclerView = findViewById(R.id.open_tasks_list_rv);
+        RecyclerView recyclerView = findViewById(R.id.open_tasks_list_rv);
         OpenTaskAdapter adapter = new OpenTaskAdapter(tasks);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

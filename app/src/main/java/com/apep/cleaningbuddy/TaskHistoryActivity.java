@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.apep.cleaningbuddy.adapters.TaskAdapter;
 import com.apep.cleaningbuddy.adapters.TaskHistoryAdapter;
 import com.apep.cleaningbuddy.models.CompletedTask;
 import com.apep.cleaningbuddy.models.Task;
@@ -30,7 +28,7 @@ public class TaskHistoryActivity extends BaseActivity {
         addNavbarListeners();
 
         this.task = Task.getTask(this, getIntent().getIntExtra("TASK_ID", 0));
-        taskHistory = task.getTaskHistory(this);
+        taskHistory = task.getTaskHistory();
 
         RecyclerView recyclerView = findViewById(R.id.history_list_rv);
         TaskHistoryAdapter adapter = new TaskHistoryAdapter(taskHistory, this);

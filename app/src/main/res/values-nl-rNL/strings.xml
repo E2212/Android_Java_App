@@ -80,4 +80,5 @@
     <string name="error_password_mismatch_text">Wachtwoorden komen niet overeen.</string>
     <string name="error_invalid_username_password_text">Ongeldige gebruikersnaam en wachtwoord combinatie</string>
     <string name="error_username_unavailable_text">Gebruikersnaam is al geregistreerd</string>
+    <string name="sp_option_none">[Geen]</string>
 </resources>

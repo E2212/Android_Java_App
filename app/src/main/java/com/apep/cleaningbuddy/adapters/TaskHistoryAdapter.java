@@ -39,7 +39,7 @@ public class TaskHistoryAdapter extends RecyclerView.Adapter<TaskHistoryAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CompletedTask completedTask = completedTasks.get(position);
-        holder.bind(completedTask, position);
+        holder.bind(completedTask);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class TaskHistoryAdapter extends RecyclerView.Adapter<TaskHistoryAdapter.
             this.context = context;
         }
 
-        public void bind(CompletedTask completedTask, int position) {
+        public void bind(CompletedTask completedTask) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             taskDateTf.setText(dateFormat.format(completedTask.getCompletionDate()));
             User user = completedTask.getUser();

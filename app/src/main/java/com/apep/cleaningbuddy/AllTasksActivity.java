@@ -2,9 +2,7 @@ package com.apep.cleaningbuddy;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,8 +15,6 @@ import java.util.List;
 
 public class AllTasksActivity extends BaseActivity implements OnTaskClickListener {
 
-    private RecyclerView recyclerView;
-    private List<Task> allTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +25,8 @@ public class AllTasksActivity extends BaseActivity implements OnTaskClickListene
         addTabListeners();
         addNewTaskButton();
 
-        allTasks = Task.getAll(AllTasksActivity.this);
-        recyclerView = findViewById(R.id.all_tasks_list_rv);
+        List<Task> allTasks = Task.getAll(AllTasksActivity.this);
+        RecyclerView recyclerView = findViewById(R.id.all_tasks_list_rv);
         TaskAdapter adapter = new TaskAdapter(allTasks, this, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

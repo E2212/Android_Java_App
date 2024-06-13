@@ -1,7 +1,6 @@
 package com.apep.cleaningbuddy.models;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -9,12 +8,12 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import com.apep.cleaningbuddy.TaskActivity;
-import com.apep.cleaningbuddy.TaskHistoryActivity;
 import com.apep.cleaningbuddy.database.Database;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -167,7 +166,7 @@ public class Task {
         this.user = user;
     }
 
-    public List<CompletedTask> getTaskHistory(Context context) {
+    public List<CompletedTask> getTaskHistory() {
         return taskHistory;
     }
 
@@ -195,7 +194,9 @@ public class Task {
             if (completedTask != null) {
                 // Wanneer het verschil in dagen met het laatst voltooide moment lager
                 // of gelijk is aan de interval verwijderen we deze uit de lijst
-                Date now = new Date();
+                LocalDate localDate = LocalDate.now();
+                LocalDateTime localDateTime = localDate.atStartOfDay();
+                Date now = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
                 long millisDifference = now.getTime() - completedTask.getCompletionDate().getTime();
                 long dayDifference = millisDifference / (1000 * 60 * 60 * 24);
 
@@ -214,7 +215,11 @@ public class Task {
             CompletedTask completedTask = new CompletedTask();
             completedTask.setTaskId(task.getId());
             completedTask.setUserId(User.getLoggedInUser().getId());
-            completedTask.setCompletionDate(new Date());
+
+            LocalDate localDate = LocalDate.now();
+            LocalDateTime localDateTime = localDate.atStartOfDay();
+            Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+            completedTask.setCompletionDate(date);
             CompletedTask.addCompletedTask(context, completedTask);
         }
     }
@@ -226,7 +231,9 @@ public class Task {
             if (completedTask != null) {
                 // Wanneer het verschil in dagen met het laatst voltooide moment lager
                 // of gelijk is aan de interval verwijderen we deze uit de lijst
-                Date now = new Date();
+                LocalDate localDate = LocalDate.now();
+                LocalDateTime localDateTime = localDate.atStartOfDay();
+                Date now = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
                 long millisDifference = now.getTime() - completedTask.getCompletionDate().getTime();
                 long dayDifference = millisDifference / (1000 * 60 * 60 * 24);
 

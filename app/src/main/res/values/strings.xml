@@ -37,6 +37,7 @@
     <string name="task_description">Description</string>
     <string name="task_name_req">Task name *</string>
     <string name="task_custom_interval">Custom interval *</string>
+    <string name="sp_option_none">[None]</string>
 
     <!-- Lists -->
     <string name="list_header_id">ID</string>
@@ -103,7 +104,7 @@
     <string name="error_length_text">%1$s must be at least %2$d characters long.</string>
     <string name="error_numeric_text">%1$s must be numeric.</string>
     <string name="error_required_text">%1$s is required.</string>
-    <string name="error_password_min_length_text">%1$s must be atleast %2$d characters.</string>
+    <string name="error_password_min_length_text">%1$s must be at least %2$d characters.</string>
     <string name="error_password_max_length_text">%1$s must not be longer than %2$d characters.</string>
     <string name="error_password_no_spaces_text">%1$s must not contain spaces.</string>
     <string name="error_password_strength_text">%1$s must contain at least one uppercase letter, one lowercase letter, one number and one special character.</string>

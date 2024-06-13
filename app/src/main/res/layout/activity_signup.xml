@@ -7,7 +7,7 @@
     android:background="?attr/android:windowBackground">
 
     <TextView
-        android:id="@+id/signup_tv_tekst_id"
+        android:id="@+id/signup_tv_text_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
@@ -27,7 +27,7 @@
         android:textColor="?attr/colorPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/signup_tv_tekst_id"
+        app:layout_constraintTop_toBottomOf="@id/signup_tv_text_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>

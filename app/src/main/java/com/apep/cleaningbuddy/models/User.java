@@ -2,7 +2,6 @@ package com.apep.cleaningbuddy.models;
 
 import android.content.Context;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
@@ -77,12 +76,6 @@ public class User {
         }
     }
 
-    public static void updateUser(Context context, User user) {
-        if (user != null) {
-            Database.getDatabase(context).userDao().update(user);
-        }
-    }
-
     public static List<User> getAll(Context context) {
         return Database.getDatabase(context).userDao().getAll();
     }
@@ -99,6 +92,17 @@ public class User {
     }
     public static void logout() {
         loggedInUser = null;
+    }
+
+    public static Integer getListIndex(List<User> users, User user) {
+        Integer index = null;
+        for (User listUser : users) {
+            if (listUser.getId() != null && listUser.getId().equals(user.getId())) {
+                index = users.indexOf(listUser);
+                break;
+            }
+        }
+        return index;
     }
 
     @Override
